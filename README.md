@@ -29,3 +29,7 @@ __管理者__
 ## マーケット
 釣り好きな方
 釣りに興味がある釣り初心者の方
+
+
+## 画面遷移図
+[画面遷移図は、こちら](https://www.figma.com/file/pvYYIfp4SHRJADhbdY0Xgh/画面遷移図?node-id=0%3A1)
