@@ -4,7 +4,7 @@ class CreateCookingInformations < ActiveRecord::Migration[6.0]
       t.references :cooking, null: false, foreign_key: true
       t.references :fish, null: false, foreign_key: true
       t.string :image
-      t.time :cooking_time, null: false
+      t.integer :cooking_time, null: false
       t.string :cooking_url
       t.references :handle, null: false, foreign_key: true
 

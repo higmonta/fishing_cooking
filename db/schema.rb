@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_184543) do
     t.bigint "cooking_id", null: false
     t.bigint "fish_id", null: false
     t.string "image"
-    t.time "cooking_time", null: false
+    t.integer "cooking_time", null: false
     t.string "cooking_url"
     t.bigint "handle_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_184543) do
   create_table "fish_handle_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "fish_id", null: false
     t.bigint "handle_id", null: false
-    t.time "handle_time", null: false
+    t.integer "handle_time", null: false
     t.string "handle_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
