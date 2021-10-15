@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2021_10_15_184543) do
   end
 
   create_table "handles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "pattern", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["type"], name: "index_handles_on_type", unique: true
+    t.index ["pattern"], name: "index_handles_on_pattern", unique: true
   end
 
   add_foreign_key "cooking_informations", "cookings"

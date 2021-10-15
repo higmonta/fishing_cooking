@@ -35,4 +35,4 @@ __管理者__
 [画面遷移図は、こちら](https://www.figma.com/file/pvYYIfp4SHRJADhbdY0Xgh/画面遷移図?node-id=0%3A1)
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/b8915af1c1627a1e45645b4c242da078.png)](https://gyazo.com/b8915af1c1627a1e45645b4c242da078)
+[![Image from Gyazo](https://i.gyazo.com/40ea4ff8f452be4702fb2c8478a6bcb3.png)](https://gyazo.com/40ea4ff8f452be4702fb2c8478a6bcb3)
