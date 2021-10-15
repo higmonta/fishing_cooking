@@ -31,5 +31,9 @@ module FishingCooking
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.generators do |g|
+      g.helper :false
+      g.resource_route :false
+    end
   end
 end
