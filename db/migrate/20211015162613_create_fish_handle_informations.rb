@@ -1,4 +1,4 @@
-class CreateFishHandleInfomations < ActiveRecord::Migration[6.0]
+class CreateFishHandleInformations < ActiveRecord::Migration[6.0]
   def change
     create_table :fish_handle_informations do |t|
       t.references :fish, null: false, foreign_key: true
