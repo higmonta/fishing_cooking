@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_130420) do
+ActiveRecord::Schema.define(version: 2021_10_29_135127) do
 
   create_table "cooking_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "cooking_id", null: false
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_130420) do
     t.bigint "handle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "after_handle_fish_processing_time", null: false
     t.integer "rest_fish_time", null: false
     t.integer "cooking_total_time", null: false
     t.index ["cooking_id"], name: "index_cooking_informations_on_cooking_id"
