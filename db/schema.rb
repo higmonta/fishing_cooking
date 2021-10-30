@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_130420) do
+ActiveRecord::Schema.define(version: 2021_10_29_135127) do
 
   create_table "cooking_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "cooking_id", null: false
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_130420) do
     t.bigint "handle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "after_handle_fish_processing_time", null: false
     t.integer "rest_fish_time", null: false
     t.integer "cooking_total_time", null: false
     t.index ["cooking_id"], name: "index_cooking_informations_on_cooking_id"
@@ -36,13 +35,6 @@ ActiveRecord::Schema.define(version: 2021_10_26_130420) do
     t.index ["name"], name: "index_cookings_on_name", unique: true
   end
 
-  create_table "fish", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "kind", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["kind"], name: "index_fish_on_kind", unique: true
-  end
-
   create_table "fish_handle_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "fish_id", null: false
     t.bigint "handle_id", null: false
@@ -54,6 +46,13 @@ ActiveRecord::Schema.define(version: 2021_10_26_130420) do
     t.index ["handle_id"], name: "index_fish_handle_informations_on_handle_id"
   end
 
+  create_table "fishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "kind", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind"], name: "index_fishes_on_kind", unique: true
+  end
+
   create_table "handles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "pattern", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -62,8 +61,8 @@ ActiveRecord::Schema.define(version: 2021_10_26_130420) do
   end
 
   add_foreign_key "cooking_informations", "cookings"
-  add_foreign_key "cooking_informations", "fish"
+  add_foreign_key "cooking_informations", "fishes"
   add_foreign_key "cooking_informations", "handles"
-  add_foreign_key "fish_handle_informations", "fish"
+  add_foreign_key "fish_handle_informations", "fishes"
   add_foreign_key "fish_handle_informations", "handles"
 end
