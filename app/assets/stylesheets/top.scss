@@ -1,0 +1,21 @@
+.top-wrapper {
+    background-image: image-url('back.PNG');
+    background-color: rgba(184,179,174,0.5);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: 50% 40%;
+    .top-container {
+        font-family: "Hiragino Sans";
+        height: 800px;
+    }
+        .title {
+            color: white;
+            font-size: 100px;
+        }
+        .top-phrase {
+            color: orange;
+            font-weight: bold;
+            margin-top: 150px;
+        }
+}
+
