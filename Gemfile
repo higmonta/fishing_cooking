@@ -45,5 +45,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
+gem 'ransack'
+gem 'rails-i18n', '~> 6.0.0'
 
 
