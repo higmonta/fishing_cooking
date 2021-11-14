@@ -1,0 +1,32 @@
+.mt-5.fs-3.cooking-list
+  .cooking-information-title
+    ' 料理名:
+    = Cooking.find(cooking_information.cooking_id).name
+    | (
+    = Fish.find(cooking_information.fish_id).kind
+    | )<br>
+    ' 捌き方:
+    = Handle.find(cooking_information.handle_id).pattern
+  .cooking-information-overview.mt-4
+    .d-inline-block
+      = image_tag cooking_image_path(fish_id: cooking_information.fish_id, cooking_id: cooking_information.cooking_id), size: '400x300', class: 'rounded-circle'
+    .d-inline-block.float-end
+      ' 1匹あたりの目安時間<br>
+        作業時間の合計(捌く時間+料理時間):
+      = FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_time + cooking_information.cooking_total_time
+      | (分)<br>
+      ' 捌く時間:
+      = FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_time
+      | (分)<br>
+      ' 料理時間:
+      = cooking_information.cooking_total_time
+      | (分)<br>
+  .cooking-information-details.mt-4
+    .d-inline-block
+      | 捌き方の動画
+      .mt-3
+        iframe width="400" height="300" src="#{FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_url}"
+    .d-inline-block.float-end
+      | 料理のレシピサイト<br>
+      .mt-5
+        = link_to '調理レシピ', "#{cooking_information.cooking_url}"
