@@ -13,7 +13,7 @@
     .d-inline-block.float-end
       ' 1匹あたりの目安時間<br>
         作業時間の合計(捌く時間+料理時間):
-      = FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_time + cooking_information.cooking_total_time
+      = operation_total_time(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id, cooking_information: cooking_information)
       | (分)<br>
       ' 捌く時間:
       = FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_time
