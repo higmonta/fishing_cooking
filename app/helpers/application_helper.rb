@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def cooking_image_path(fish_id:, cooking_id:)
-    "cooking/#{Fish.find(fish_id).kind}/#{Cooking.find(cooking_id).name}.jpg"
+  def cooking_image_path(cooking_information)
+    "cooking/#{cooking_information.fish.kind}/#{cooking_information.cooking.name}.jpg"
   end
 
   def operation_total_time(fish_id:, handle_id:, cooking_information:)

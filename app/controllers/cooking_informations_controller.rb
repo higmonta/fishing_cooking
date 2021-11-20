@@ -3,6 +3,6 @@ class CookingInformationsController < ApplicationController
     @fishes = Fish.all
     @handles = Handle.all
     @q = CookingInformation.ransack(params[:q])
-    @cooking_informations = @q.result(distinct: true)
+    @cooking_informations = @q.result(distinct: true).includes(:cooking, :fish, :handle)
   end
 end
