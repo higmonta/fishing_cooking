@@ -37,4 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
   genreSelect.addEventListener('change', (e) => {
     setMenuOptions(e.target.value);
   })
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const selectFish = document.getElementById('q_fish_kind_eq').value;
+    setMenuOptions(selectFish);
+  })
 });
