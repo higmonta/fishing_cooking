@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
           selectHandlePattern.appendChild(option_new);
       });
   }
+
+  function setSelectHandle(selectedHandle) {
+    const selectHandlePattern = document.getElementById('q_handle_pattern_eq');
+    selectHandlePattern.querySelector(`option[value='${selectedHandle}']`).setAttribute('selected', 'selected');
+  }
   
   const genreSelect = document.getElementById('q_fish_kind_eq');
   
@@ -39,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   window.addEventListener('DOMContentLoaded', () => {
-    const selectFish = document.getElementById('q_fish_kind_eq').value;
+    const selectFish = genreSelect.value;
+    const selectHandle = document.getElementById('q_handle_pattern_eq').value;
     setMenuOptions(selectFish);
+    setSelectHandle(selectHandle);
   })
 });
