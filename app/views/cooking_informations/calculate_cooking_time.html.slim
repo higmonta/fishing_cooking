@@ -1,0 +1,19 @@
+.search-wrapper
+  .container
+    .row.justify-content-md-center
+      .col-md-auto.mt-5
+        = render partial: 'search_time_form'
+    .row.justify-content-md-center
+      .col
+       .mt-5.fs-3.cooking-list
+         .cooking-information-title
+           ' 料理名:
+           = @cooking_name
+           | (
+           = @fish_kind
+           | )<br>
+           ' 捌き方:
+           = @handle_pattern
+         .cooking-information-overview.mt-4
+           .d-inline-block
+             = image_tag cooking_image_path(@cooking_information), size: '400x300', class: 'rounded-circle'
