@@ -11,10 +11,10 @@ class CookingInformationsController < ApplicationController
     @cookings = Cooking.all
   end
 
-  def calculate_cooking_time
+  def search_calculate_cooking_time
     @fishes = Fish.all
     @cookings = Cooking.all
-    search_time_format = CookingSearchTimeForm.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], count: params[:count])
+    search_time_format = CookingSearchTimeForm.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name])
     if search_time_format.save
       @fish_kind = params[:fish_kind]
       @cooking_name = params[:cooking_name]
@@ -23,6 +23,22 @@ class CookingInformationsController < ApplicationController
     else
       flash.now[:notice] = "検索フォームを全て入力してくだい"
       render :search_time
+    end
+  end
+
+  def calculate_cooking_time
+    @fishes = Fish.all
+    @cookings = Cooking.all
+    calculate_cooking_time_format = CalculateCookingTimeForm.new(let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
+    if calculate_cooking_time_format.save
+      calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
+      @handle_total_time = calculate_cooking_time.calculate_handle_total_time
+      @cooking_total_time = calculate_cooking_time.calculate_cooking_total_time
+      @operation_total_time = @handle_total_time + @cooking_total_time
+      render "calculate_cooking_time.js.erb"
+    else
+      flash.now[:notice] = "計算フォームを全て入力してください"
+      render :search_calculate_cooking_time
     end
   end
 end

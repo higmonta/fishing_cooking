@@ -18,7 +18,7 @@
       ' 捌く時間:
       = FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_time
       | (分)<br>
-      ' 料理時間:
+      ' 調理時間:
       = cooking_information.cooking_total_time
       | (分)<br>
   .cooking-information-details.mt-4

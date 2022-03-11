@@ -1,0 +1,52 @@
+.search-wrapper
+  .container
+    .row.justify-content-md-center
+      .col-md-auto.mt-5
+        = render partial: 'search_time_form'
+    .cooking-list.mt-5
+      .row
+        .col-auto.mt-5.fs-3
+          .cooking-information-title
+            ' 料理名:
+            = @cooking_name
+            | (
+            = @fish_kind
+            | )<br>
+            ' 捌き方:
+            = @handle_pattern
+      .row.justify-content-md-center
+        .col-5.mt-4
+          = image_tag cooking_image_path(@cooking_information), size: '400x300', class: 'rounded-circle'
+        .col-7.mt-4.fs-3
+          = form_with url: calculate_cooking_time_cooking_informations_path do |f|
+            .form-group
+              = f.label :count, '調理する魚の数:'
+              = f.number_field :count, min: 1, placeholder: '料理する魚の数(必須)', class: 'calculate-fish-count-form text-center'
+            .form-group
+              = f.label :let_foodstuff_capacity, '食材を寝かせられるキャパシティ:'
+              = f.number_field :let_foodstuff_capacity, min: 1, step: 0.5, placeholder: '匹数(必須)', class: 'calculate-cooking-capacity-form mt-2 text-center'
+            .form-group
+              = f.label :cookware_capacity, '調理機材のキャパシティ:'
+              = f.number_field :cookware_capacity, min: 1, step: 0.5, placeholder: '匹数(必須)', class: 'calculate-cooking-capacity-form mt-2 text-center'
+            .form-group
+              = hidden_field_tag :fish_kind, @fish_kind
+              = hidden_field_tag :cooking_name, @cooking_name
+            = f.submit '合計の料理時間は?', class: 'btn btn-primary calculate-cooking-time-button mt-2'
+      .row.justify-content-md-center
+        .col-auto.mt-5.fs-3#js-result-calculate-cooking-time
+          ' 作業時間の合計(捌く時間+料理時間):
+          | ?(分)<br>
+          ' 捌く時間の合計:
+          | ?(分)<br>
+          ' 調理時間の合計:
+          | ?(分)<br>
+      .row.justify-content-md-center.cooking-information-details.mt-4.fs-3
+        .col-6
+          | 捌き方の動画
+          .mt-3
+            iframe width="400" height="300" src="#{FishHandleInformation.find_by(fish_id: @cooking_information.fish_id, handle_id: @cooking_information.handle_id).handle_url}"
+        .col-6
+          | 料理のレシピサイト<br>
+          .mt-5
+            = link_to '調理レシピ', "#{@cooking_information.cooking_url}"
+  

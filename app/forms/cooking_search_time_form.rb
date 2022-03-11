@@ -4,11 +4,9 @@ class CookingSearchTimeForm
   
   attribute :fish_kind, :string
   attribute :cooking_name, :string
-  attribute :count, :integer
 
   validates :fish_kind, presence: true
   validates :cooking_name, presence: true
-  validates :count, presence: true
 
   def save
     invalid? ? false : true
