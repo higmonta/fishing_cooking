@@ -3,9 +3,9 @@
     .row.justify-content-md-center
       .col-md-auto.mt-5
         = render partial: 'search_time_form'
-    .cooking-list.mt-5
+    .cooking-list.mt-5.fs-3
       .row
-        .col-auto.mt-5.fs-3
+        .col-auto.mt-5
           .cooking-information-title
             ' 料理名:
             = @cooking_name
@@ -17,7 +17,7 @@
       .row.justify-content-md-center
         .col-5.mt-4
           = image_tag cooking_image_path(@cooking_information), size: '400x300', class: 'rounded-circle'
-        .col-7.mt-4.fs-3
+        .col-7.mt-4
           = form_with url: calculate_cooking_time_cooking_informations_path do |f|
             .form-group
               = f.label :count, '調理する魚の数:'
@@ -33,14 +33,14 @@
               = hidden_field_tag :cooking_name, @cooking_name
             = f.submit '合計の料理時間は?', class: 'btn btn-primary calculate-cooking-time-button mt-2'
       .row.justify-content-md-center
-        .col-auto.mt-5.fs-3#js-result-calculate-cooking-time
+        .col-auto.mt-5#js-result-calculate-cooking-time
           ' 作業時間の合計(捌く時間+料理時間):
           | ?(分)<br>
           ' 捌く時間の合計:
           | ?(分)<br>
           ' 調理時間の合計:
           | ?(分)<br>
-      .row.justify-content-md-center.cooking-information-details.mt-4.fs-3
+      .row.justify-content-md-center.cooking-information-details.mt-4
         .col-6
           | 捌き方の動画
           .mt-3

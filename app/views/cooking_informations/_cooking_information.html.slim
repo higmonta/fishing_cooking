@@ -1,16 +1,18 @@
-.mt-5.fs-3.cooking-list
-  .cooking-information-title
-    ' 料理名:
-    = cooking_information.cooking.name
-    | (
-    = cooking_information.fish.kind
-    | )<br>
-    ' 捌き方:
-    = cooking_information.handle.pattern
-  .cooking-information-overview.mt-4
-    .d-inline-block
+.cooking-list.mt-5.fs-3
+  .row
+    .col-auto.mt-5
+      .cooking-information-title
+        ' 料理名:
+        = cooking_information.cooking.name
+        | (
+        = cooking_information.fish.kind
+        | )<br>
+        ' 捌き方:
+        = cooking_information.handle.pattern
+  .row.justify-content-md-center
+    .col-5.mt-4
       = image_tag cooking_image_path(cooking_information), size: '400x300', class: 'rounded-circle'
-    .d-inline-block.float-end
+    .col-7.mt-4
       ' 1匹あたりの目安時間<br>
         作業時間の合計(捌く時間+料理時間):
       = operation_total_time(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id, cooking_information: cooking_information)
@@ -21,12 +23,12 @@
       ' 調理時間:
       = cooking_information.cooking_total_time
       | (分)<br>
-  .cooking-information-details.mt-4
-    .d-inline-block
+  .row.justify-content-md-center.cooking-information-details.mt-4
+    .col-6
       | 捌き方の動画
       .mt-3
         iframe width="400" height="300" src="#{FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_url}"
-    .d-inline-block.float-end
+    .col-6
       | 料理のレシピサイト<br>
       .mt-5
         = link_to '調理レシピ', "#{cooking_information.cooking_url}"

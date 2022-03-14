@@ -8,6 +8,4 @@
             = f.collection_select :handle_pattern_eq, @handles, :pattern, :pattern, { include_blank: '捌き方(任意)' }, {class: 'search_select_form'}
             = button_tag type: 'submit', class: 'btn btn-primary search_button' do
               i.fas.fa-search
-    .row.justify-content-md-center
-      .col
-        = render @cooking_informations
+    = render @cooking_informations
