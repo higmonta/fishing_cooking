@@ -8,9 +8,6 @@ class CalculateCookingTime
   attribute :cookware_capacity, :float
   attribute :count, :integer
   
-  def calculate_operation_total_time
-  end
-  
   def calculate_handle_total_time
     cooking_id = Cooking.find_by(name: cooking_name).id
     fish_id = Fish.find_by(kind: fish_kind).id

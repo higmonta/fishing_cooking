@@ -29,6 +29,8 @@ class CookingInformationsController < ApplicationController
   def calculate_cooking_time
     @fishes = Fish.all
     @cookings = Cooking.all
+    @fish_kind = params[:fish_kind]
+    @cooking_name = params[:cooking_name]
     calculate_cooking_time_format = CalculateCookingTimeForm.new(let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
     if calculate_cooking_time_format.save
       calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
@@ -37,8 +39,10 @@ class CookingInformationsController < ApplicationController
       @operation_total_time = @handle_total_time + @cooking_total_time
       render "calculate_cooking_time.js.erb"
     else
+      @fish_kind = params[:fish_kind]
+      @cooking_name = params[:cooking_name]
       flash.now[:notice] = "計算フォームを全て入力してください"
-      render :search_calculate_cooking_time
+      render "calculate_cooking_time_error.js.erb"
     end
   end
 end
