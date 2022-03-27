@@ -48,5 +48,6 @@ gem 'html2slim'
 gem 'ransack'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'pry-rails'
+gem 'kaminari'
 
 
