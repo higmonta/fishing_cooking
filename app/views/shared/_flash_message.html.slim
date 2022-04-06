@@ -1,2 +1,2 @@
-- if flash.notice.present?
-  .alert.alert-success#js-error-message= flash.notice
+- flash.each do |message_type, message|
+  #js-error-message.alert class="alert-#{message_type}"= message
