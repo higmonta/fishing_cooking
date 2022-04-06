@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       post 'calculate_cooking_time'
     end
   end
+  resources :users, only: %i[new create]
 end

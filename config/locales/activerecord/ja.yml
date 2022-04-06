@@ -4,6 +4,7 @@ ja:
       cooking: '料理'
       fish: '魚'
       handle: '捌き方'
+      user: '会員者'
     attributes:
       cooking:
         name: '料理'
@@ -11,3 +12,9 @@ ja:
         kind: '魚の種類'
       handle:
         pattern: '捌き方'
+      user:
+        name: 'ニックネーム'
+        email: 'Eメール'
+        password: 'パスワード'
+        password_confirmation: 'パスワード再確認'
+
