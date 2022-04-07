@@ -1,0 +1,2 @@
+class CookingMemory < ApplicationRecord
+end

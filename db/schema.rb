@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_150406) do
+ActiveRecord::Schema.define(version: 2022_04_07_171025) do
 
   create_table "cooking_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "cooking_id", null: false
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 2022_03_27_150406) do
     t.index ["cooking_id"], name: "index_cooking_informations_on_cooking_id"
     t.index ["fish_id"], name: "index_cooking_informations_on_fish_id"
     t.index ["handle_id"], name: "index_cooking_informations_on_handle_id"
+  end
+
+  create_table "cooking_memories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "cooking_name", null: false
+    t.string "fish", null: false
+    t.date "cooking_date"
+    t.text "memo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_cooking_memories_on_user_id"
   end
 
   create_table "cookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -74,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_03_27_150406) do
   add_foreign_key "cooking_informations", "cookings"
   add_foreign_key "cooking_informations", "fishes"
   add_foreign_key "cooking_informations", "handles"
+  add_foreign_key "cooking_memories", "users"
   add_foreign_key "fish_handle_informations", "fishes"
   add_foreign_key "fish_handle_informations", "handles"
 end
