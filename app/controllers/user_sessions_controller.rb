@@ -4,7 +4,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = login(user_params)
+    @user = login(params[:email], params[:password])
     if @user
       redirect_to "#"
     else
