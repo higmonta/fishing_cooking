@@ -6,7 +6,8 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_to "#"
+      flash[:success] = "ログインに成功しました"
+      redirect_to cooking_memories_path
     else
       flash.now[:danger] = "ログインに失敗しました"
       render :new
