@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: { case_sensitive: true }, presence: true
   validates :name, presence: true
+
+  has_many :cooking_memories, dependent: :destroy
 end
