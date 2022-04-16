@@ -1,6 +1,7 @@
 class CookingMemoriesController < ApplicationController
   before_action :require_login
   def new
+    @cooking_memory = CookingMemory.new
   end
 
   def create

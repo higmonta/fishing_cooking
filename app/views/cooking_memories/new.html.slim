@@ -1,0 +1,25 @@
+.container
+  .row.justify-content-md-center
+    .col-md-auto
+      .mt-3.cooking-memory-title
+        | 料理履歴の新規登録
+  .row.justify-content-md-center
+    .col-6
+      = form_with model: @cooking_memory, local: true do |f|
+        .mt-4.text-center
+          = f.label :cooking_name
+          = f.text_field :cooking_name, class: 'form-control'
+        .mt-4.text-center
+          = f.label :fish
+          = f.text_field :fish, class: 'form-control'
+        .mt-4.text-center
+          = f.label :cooking_date
+          = f.date_field :cooking_date, class: 'form-control'
+        .mt-4.text-center
+          = f.label :cooking_memory_image
+          = f.file_field :cooking_memory_image, class: 'form-control'
+        .mt-4.text-center
+          = f.label :memo
+          = f.text_area :memo, class: 'form-control', size: '20 x 8'
+        .mt-4.text-center
+          = f.submit nil, class: 'btn btn-primary'
