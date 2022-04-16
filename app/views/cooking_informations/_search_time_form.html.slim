@@ -1,5 +1,5 @@
 = form_with url: search_calculate_cooking_time_cooking_informations_path, local: true do |f|
-  .form-group
+  .mt-4
     = f.collection_select :fish_kind, @fishes, :kind, :kind, { include_blank: '魚の種類(必須)', selected: params[:fish_kind] }, {class: 'search_select_form'}
     = f.collection_select :cooking_name, @cookings, :name, :name, { include_blank: '料理の種類(必須)', selected:  params[:cooking_name]}, {class: 'search_select_form'}
     = button_tag type: 'submit', class: 'btn btn-primary search_button' do
