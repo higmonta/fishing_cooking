@@ -19,7 +19,7 @@ ja:
         password_confirmation: 'パスワード再確認'
       cooking_memory:
         cooking_name: '料理名'
-        fish: '魚の種類'
+        fish_name: '魚の種類'
         cooking_date: '調理をした日'
         cooking_memory_image: '料理の画像'
         memo: 'メモ欄'
