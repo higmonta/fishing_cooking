@@ -6,6 +6,7 @@
   .row.justify-content-md-center
     .col-6
       = form_with model: @cooking_memory, local: true do |f|
+        = render 'shared/error_messages', { object: f.object }
         .mt-4.text-center
           = f.label :cooking_name
           = f.text_field :cooking_name, class: 'form-control'
