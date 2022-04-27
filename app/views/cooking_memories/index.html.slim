@@ -1,16 +1,18 @@
-.container
-  .row.justify-content-md-center
-    .col.col-md-auto
-      .mt-3.cooking-memory-title
-        | 料理の履歴
-  .row.justify-content-md-center
-    .col.col-md-auto
-      = search_form_for @q, class: 'mt-3' do |f|
-        .form-group
-          = f.search_field :fish_name_cont, placeholder: "魚の種類", class: 'me-3 cooking-memories-search-select-form'
-          = f.search_field :cooking_date_gteq, placeholder: "料理をした日", class: 'me-1 cooking-memories-search-select-form'
-          span.me-1 〜
-          = f.search_field :cooking_date_lteq, placeholder: "料理をした日", class: 'me-3 cooking-memories-search-select-form'
-          = f.search_field :fish_name_or_cooking_name_or_memo_cont, placeholder: "キーワード", class: 'me-3 cooking-memories-search-select-form'
-          = button_tag type: 'submit', class: 'btn btn-primary cooking_memories_search_button' do
-            i.fas.fa-search
+.cooking-memory-wrapper
+  .container
+    .row.justify-content-md-center
+      .col.col-md-auto
+        .mt-3.cooking-memory-title
+          | 料理の履歴
+    .row.justify-content-md-center
+      .col-10
+        = search_form_for @q, class: 'mt-3' do |f|
+          .form-group
+            = f.search_field :fish_name_cont, placeholder: "魚の種類", class: 'me-3 cooking-memories-search-select-form'
+            = f.search_field :cooking_date_gteq, placeholder: "料理をした日", class: 'me-1 cooking-memories-search-select-form'
+            span.me-1 〜
+            = f.search_field :cooking_date_lteq, placeholder: "料理をした日", class: 'me-3 cooking-memories-search-select-form'
+            = f.search_field :fish_name_or_cooking_name_or_memo_cont, placeholder: "キーワード", class: 'me-3 cooking-memories-search-select-form'
+            = button_tag type: 'submit', class: 'btn btn-primary cooking_memories_search_button' do
+              i.fas.fa-search
+    = render @cooking_memories

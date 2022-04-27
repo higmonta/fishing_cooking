@@ -1,0 +1,25 @@
+.cooking-memory-list.mt-5
+  .row.justify-content-md-center
+    .col-10.text-end.mt-3
+      = link_to '編集', '#', class: 'me-4 btn btn-success'
+      = link_to '削除', '#', class: 'btn btn-danger'
+  .row.justify-content-md-center.mt-4
+    .col-6.fs-3.text-center.cooking-memories-detail
+      ' 料理名:
+      = cooking_memory.cooking_name
+      <br>
+      ' 魚の種類:
+      = cooking_memory.fish_name
+      <br>
+      - if cooking_memory.cooking_date.present?
+        ' 料理をした日:
+        = cooking_memory.cooking_date
+        <br>
+    - if cooking_memory.cooking_memory_image.attached?
+      .col-6
+        = image_tag cooking_memory.cooking_memory_image.variant(resize: '350')
+  - if cooking_memory.memo.present?
+    .row.justify-content-md-center
+      .col-8.cooking-memories-memo-column.mt-4.p-4
+        .fs-3.text-center.mb-3.title メモ
+        = simple_format(h(cooking_memory.memo))
