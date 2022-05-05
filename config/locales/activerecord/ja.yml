@@ -23,3 +23,6 @@ ja:
         cooking_date: '調理をした日'
         cooking_memory_image: '料理の画像'
         memo: 'メモ欄'
+  date:
+    formats:
+      default: '%Y年%m月%d日'
