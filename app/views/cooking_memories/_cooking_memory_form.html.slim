@@ -1,0 +1,19 @@
+= form_with model: @cooking_memory, local: true do |f|
+  = render 'shared/error_messages', { object: f.object }
+  .mt-4.text-center
+    = f.label :cooking_name
+    = f.text_field :cooking_name, class: 'form-control'
+  .mt-4.text-center
+    = f.label :fish_name
+    = f.text_field :fish_name, class: 'form-control'
+  .mt-4.text-center
+    = f.label :cooking_date
+    = f.date_field :cooking_date, class: 'form-control'
+  .mt-4.text-center
+    = f.label :cooking_memory_image
+    = f.file_field :cooking_memory_image, class: 'form-control'
+  .mt-4.text-center
+    = f.label :memo
+    = f.text_area :memo, class: 'form-control', size: '20 x 8'
+  .mt-4.text-center
+    = f.submit nil, class: 'btn btn-primary'
