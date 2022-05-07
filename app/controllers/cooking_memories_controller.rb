@@ -26,6 +26,10 @@ class CookingMemoriesController < ApplicationController
   end
 
   def destroy
+    cooking_memory = CookingMemory.find(params[:id])
+    cooking_memory.destroy
+    flash[:success] = '削除に成功しました'
+    redirect_to cooking_memories_path
   end
 
   private
