@@ -2,10 +2,10 @@
   = render 'shared/error_messages', { object: f.object }
   .mt-4.text-center
     = f.label :cooking_name
-    = f.text_field :cooking_name, class: 'form-control'
+    = f.text_field :cooking_name, class: 'form-control search_form_placeholder', placeholder: '(必須)'
   .mt-4.text-center
     = f.label :fish_name
-    = f.text_field :fish_name, class: 'form-control'
+    = f.text_field :fish_name, class: 'form-control search_form_placeholder', placeholder: '(必須)'
   .mt-4.text-center
     = f.label :cooking_date
     = f.date_field :cooking_date, class: 'form-control'
