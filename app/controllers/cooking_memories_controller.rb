@@ -7,7 +7,8 @@ class CookingMemoriesController < ApplicationController
   def create
     @cooking_memory = current_user.cooking_memories.new(cooking_memory_params)
     if @cooking_memory.save
-      redirect_to cooking_memories_path, success: '登録に成功しました'
+      flash[:success] = '登録に成功しました'
+      redirect_to cooking_memories_path
     else
       flash.now[:danger] = '登録に失敗しました'
       render :new
