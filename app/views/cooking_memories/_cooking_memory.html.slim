@@ -15,9 +15,8 @@
         ' 料理をした日:
         = l cooking_memory.cooking_date
         <br>
-    - if cooking_memory.cooking_memory_image.attached?
-      .col-6
-        = image_tag cooking_memory.cooking_memory_image.variant(resize: '350')
+    .col-6
+      = image_tag cooking_memory.cooking_memory_image.variant(resize: '350')
   - if cooking_memory.memo.present?
     .row.justify-content-md-center
       .col-8.cooking-memories-memo-column.mt-4.p-4
