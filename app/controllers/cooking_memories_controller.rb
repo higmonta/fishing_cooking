@@ -21,9 +21,18 @@ class CookingMemoriesController < ApplicationController
   end
 
   def edit
+    @cooking_memory = CookingMemory.find(params[:id])
   end
 
   def update
+    @cooking_memory = CookingMemory.find(params[:id])
+    if @cooking_memory.update(cooking_memory_params)
+      flash[:success] = '更新に成功しました'
+      redirect_to cooking_memories_path
+    else
+      flash.now[:danger] = '更新に失敗しました'
+      render :edit
+    end
   end
 
   def destroy

@@ -1,7 +1,7 @@
 .cooking-memory-list.mt-5
   .row.justify-content-md-center
     .col-10.text-end.mt-3
-      = link_to '編集', '#', class: 'me-4 btn btn-success'
+      = link_to '編集', edit_cooking_memory_path(cooking_memory), class: 'me-4 btn btn-success'
       = link_to '削除', cooking_memory_path(cooking_memory), method: :delete, data: { confirm: "こちらの料理履歴を削除してもよろしいですか？" }, class: 'btn btn-danger'
   .row.justify-content-md-center.mt-4
     .col-6.fs-3.text-center.cooking-memories-detail
