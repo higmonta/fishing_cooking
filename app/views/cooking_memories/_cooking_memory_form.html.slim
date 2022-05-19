@@ -12,6 +12,10 @@
   .mt-4.text-center
     = f.label :cooking_memory_image
     = f.file_field :cooking_memory_image, class: 'form-control'
+    - if @cooking_memory.cooking_memory_image.attached?
+      = image_tag @cooking_memory.cooking_memory_image.variant(resize: '350')
+    - else
+      = image_tag 'cooking_memory/default.png'
   .mt-4.text-center
     = f.label :memo
     = f.text_area :memo, class: 'form-control', size: '20 x 8'

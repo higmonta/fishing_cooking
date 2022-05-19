@@ -1,11 +1,13 @@
 class CookingMemoriesController < ApplicationController
   before_action :require_login
+
   def new
     @cooking_memory = CookingMemory.new
   end
 
   def create
     @cooking_memory = current_user.cooking_memories.new(cooking_memory_params)
+    @cooking_memory.need_default_image?
     if @cooking_memory.save
       flash[:success] = '登録に成功しました'
       redirect_to cooking_memories_path
