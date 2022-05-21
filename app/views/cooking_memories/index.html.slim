@@ -15,4 +15,4 @@
             = f.search_field :fish_name_or_cooking_name_or_memo_cont, placeholder: "キーワード", class: 'me-3 cooking-memories-search-select-form'
             = button_tag type: 'submit', class: 'btn btn-primary cooking_memories_search_button' do
               i.fas.fa-search
-    = render @cooking_memories
+    = render @current_user_cooking_memories
