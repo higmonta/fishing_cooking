@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const preview = document.querySelector("#preview")
           if(preview) {
               preview.src = reader.result;
+              preview.classList.add('preview-size');
           }
       }
       if (file) {
