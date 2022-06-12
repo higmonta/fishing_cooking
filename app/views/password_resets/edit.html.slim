@@ -1,0 +1,20 @@
+.container
+  .row.justify-content-md-center
+    .col-md-auto.mt-3.title
+      | パスワードの更新
+  .row.justify-content-md-center
+    .col-md-auto.mt-3
+      p = User.human_attribute_name(:email)
+      p = @user.email
+  .row.justify-content-md-center
+    .col-6
+      = form_with model: @user, url: password_reset_path(@token), local: true do |f|
+        = render 'shared/error_messages', object: f.object
+        .mt-4.text-center
+          = f.label :password
+          = f.password_field :password, class: 'form-control'
+        .mt-4.text-center
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control'
+        .mt-4.text-center
+          = f.submit class: 'btn btn-primary'
