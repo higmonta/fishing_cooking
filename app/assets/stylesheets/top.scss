@@ -4,18 +4,14 @@
     background-blend-mode: multiply;
     background-size: cover;
     background-position: 50% 40%;
-    .top-container {
-        font-family: "Hiragino Sans";
-        height: 800px;
+    font-family: "Hiragino Sans";
+    .title {
+        color: white;
+        font-size: 100px;
     }
-        .title {
-            color: white;
-            font-size: 100px;
-        }
-        .top-phrase {
-            color: orange;
-            font-weight: bold;
-            margin-top: 150px;
-        }
+    .top-phrase {
+        color: orange;
+        font-weight: bold;
+        margin-top: 150px;
+    }
 }
-
