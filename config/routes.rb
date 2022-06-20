@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
+  get 'terms', to: 'static_pages#terms'
   resources :cooking_informations, only: %i[index] do
     collection do
       get 'search_time'
