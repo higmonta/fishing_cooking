@@ -1,18 +1,19 @@
-.container
-  .row.justify-content-md-center
-    .col-md-auto
-      .mt-3.title
-        | ログイン
-  .row.justify-content-md-center
-    .col-6
-      = form_with url: login_path, local: true do |f|
-        .mt-4.text-center
-          = f.label :email, User.human_attribute_name(:email)
-          = f.email_field :email, class: 'form-control'
-        .mt-4.text-center
-          = f.label :password, User.human_attribute_name(:password)
-          = f.password_field :password, class: 'form-control'
-        .mt-4.text-center
-          = link_to 'パスワードを忘れた方はこちら', new_password_reset_path
-        .mt-4.text-center
-          = f.submit "ログイン", class: 'btn btn-primary'
+.member-registration-wrapper
+  .container
+    .row.justify-content-md-center
+      .col-md-6
+        .mt-3.title.text-center
+          | ログイン
+    .row.justify-content-md-center
+      .col-md-6
+        = form_with url: login_path, local: true do |f|
+          .mt-4.text-center
+            = f.label :email, User.human_attribute_name(:email)
+            = f.email_field :email, class: 'form-control'
+          .mt-4.text-center
+            = f.label :password, User.human_attribute_name(:password)
+            = f.password_field :password, class: 'form-control'
+          .mt-4.text-center
+            = link_to 'パスワードを忘れた方はこちら', new_password_reset_path
+          .mt-4.text-center
+            = f.submit "ログイン", class: 'btn btn-primary'
