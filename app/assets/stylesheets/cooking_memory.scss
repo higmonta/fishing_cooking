@@ -1,49 +1,41 @@
 .cooking-memory-wrapper {
     background-color: #FFFFCC;
-}
-
-.cooking-memory-list {
-    border: solid;
-    border-color: #EEEEEE;
-    background-color: white;
-    padding: 40px;
-}
-
-.cooking-memory-title {
-    font-size: 50px;
-    color: #f5a500;
-    font-weight: bold;
-    font-family: "Hiragino Sans";
-}
-
-.cooking-memories-search-select-form {
-    width: 200px;
-    height: 50px;
-    margin-right: 50px;
-}
-
-.cooking_memories_search_button {
-    width: 50px;
-    height: 50px;
-}
-
-.cooking-memories-detail {
-    color: #F8A608;
-    font-weight: bold;
-}
-
-.cooking-memories-memo-column {
-    border:solid;
-    border-color: blanchedalmond;
-    .title {
-        color: #FF4F02;
+    .cooking-memory-list {
+        border: solid;
+        border-color: #EEEEEE;
+        background-color: white;
+        padding: 40px;
     }
-}
-
-.search_form_placeholder::placeholder {
-    text-align: center;
-}
-
-.preview-size {
-    width: 350px;
+    .preview-size {
+        width: 350px;
+    }
+    .title {
+        font-size: 50px;
+        color: #f5a500;
+        font-weight: bold;
+        font-family: "Hiragino Sans";
+    }
+    .cooking-memories-search-select-form {
+        width: 200px;
+        height: 50px;
+        margin-right: 50px;
+    }
+    .cooking-memories-search-button {
+        width: 50px;
+        height: 50px;
+    }
+    .cooking-memories-detail {
+        color: #F8A608;
+        font-weight: bold;
+    }
+    .cooking-memories-memo-column {
+        border:solid;
+        border-color: blanchedalmond;
+        .title {
+            color: #FF4F02;
+        }
+    }
+    .search_form_placeholder::placeholder {
+        text-align: center;
+    }
 }
