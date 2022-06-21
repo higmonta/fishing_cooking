@@ -1,58 +1,44 @@
 .search-wrapper {
     background-color: #FFFFCC;
-}
-
-.search_select_form {
-    width: 350px;
-    height: 70px;
-    margin-right: 50px;
-}
-
-.search_time_form {
-    height: 70px;
-    margin-right: 20px;
-    font-size: 20px;
-}
-
-.search_button {
-    width: 70px;
-    height: 70px;
-}
-
-.cooking-information-title {
-    color: #F8A608;
-    font-weight: bold;
-}
-
-.cooking-list {
-    border: solid;
-    border-color: #EEEEEE;
-    background-color: white;
-    padding: 40px;
-}
-
-.cooking-information-details {
-    color: #B55959;
-    font-weight: bold;
-}
-
-.calculate-fish-count-form {
-    width: 220px;
-    height: 70px;
-    margin-left: 10px;
-    font-size: 20px;
-}
-
-.calculate-cooking-capacity-form {
-    width: 120px;
-    height: 70px;
-    margin-left: 10px;
-    font-size: 20px;
-}
-
-.calculate-cooking-time-button {
-    width: 300px;
-    height: 65px;
-    font-weight: bold;
-    font-size: 30px;
+    .search-select-form {
+        width: 350px;
+        height: 70px;
+        margin-right: 50px;
+    }
+    .search-button {
+        width: 70px;
+        height: 70px;
+    }
+    .title {
+        color: #F8A608;
+        font-weight: bold;
+    }
+    .cooking-list {
+        border: solid;
+        border-color: #EEEEEE;
+        background-color: white;
+        padding: 40px;
+    }
+    .cooking-information-details {
+        color: #B55959;
+        font-weight: bold;
+    }
+    .calculate-fish-count-form {
+        width: 220px;
+        height: 70px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .calculate-cooking-capacity-form {
+        width: 120px;
+        height: 70px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+    .calculate-cooking-time-button {
+        width: 300px;
+        height: 65px;
+        font-weight: bold;
+        font-size: 30px;
+    }
 }
