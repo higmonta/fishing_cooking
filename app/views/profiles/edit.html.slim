@@ -1,0 +1,18 @@
+.member-registration-wrapper
+  .container
+    .row.justify-content-md-center
+      .col-md-6
+        .mt-3.title.text-center
+          | 会員情報の編集
+    .row.justify-content-md-center
+      .col-md-6.text-center
+        = form_with model: @user, url: profile_path, local: true do |f|
+          = render 'shared/error_messages', object: f.object
+          .mt-4.text-center
+            = f.label :name
+            = f.text_field :name, class: 'form-control'
+          .mt-4.text-center
+            = f.label :email
+            = f.email_field :email, class: 'form-control'
+          .mt-4.text-center
+            = f.submit class: 'btn btn-primary'
