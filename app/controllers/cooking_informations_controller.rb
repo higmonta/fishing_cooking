@@ -10,7 +10,7 @@ class CookingInformationsController < ApplicationController
   def search_time; end
 
   def search_calculate_cooking_time
-    search_time_format = CookingSearchTimeForm.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name])
+    search_time_format = CookingSearchTimeForm.new(cooking_information_params)
     if search_time_format.save
       @fish_kind = params[:fish_kind]
       @cooking_name = params[:cooking_name]
@@ -25,7 +25,7 @@ class CookingInformationsController < ApplicationController
   def calculate_cooking_time
     @fish_kind = params[:fish_kind]
     @cooking_name = params[:cooking_name]
-    calculate_cooking_time_format = CalculateCookingTimeForm.new(let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
+    calculate_cooking_time_format = CalculateCookingTimeForm.new(calculate_cooking_time_form_params)
     if calculate_cooking_time_format.save
       calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
       @handle_total_time = calculate_cooking_time.calculate_handle_total_time
@@ -48,5 +48,13 @@ class CookingInformationsController < ApplicationController
 
   def set_cookings
     @cookings = Cooking.all
+  end
+
+  def cooking_information_params
+    params.permit(:fish_kind, :cooking_name)
+  end
+
+  def calculate_cooking_time_form_params
+    params.permit(:let_foodstuff_capacity, :cookware_capacity, :count)
   end
 end
