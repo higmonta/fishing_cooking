@@ -1,14 +1,16 @@
 .member-registration-wrapper
   .container
     .row.justify-content-md-center
-      .col-md-auto.mt-3.title
-        | パスワードの更新
+      .col-md-10
+        .mt-3.title.text-center
+          | パスワードの更新
     .row.justify-content-md-center
-      .col-md-auto.mt-3
-        p = User.human_attribute_name(:email)
-        p = @user.email
+      .col-md-6
+        .mt-3.text-center
+          p = User.human_attribute_name(:email)
+          p = @user.email
     .row.justify-content-md-center
-      .col-6
+      .col-md-6
         = form_with model: @user, url: password_reset_path(@token), local: true do |f|
           = render 'shared/error_messages', object: f.object
           .mt-4.text-center

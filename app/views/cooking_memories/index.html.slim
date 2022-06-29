@@ -1,11 +1,11 @@
 .cooking-memory-wrapper
   .container
     .row.justify-content-md-center
-      .col.col-md-auto
-        .mt-3.title
+      .col.col-md-6
+        .mt-3.title.text-center
           | 料理の履歴
     .row.justify-content-md-center
-      .col-10
+      .col-md-10
         = search_form_for @q, class: 'mt-3' do |f|
           .form-group
             = f.search_field :fish_name_cont, placeholder: "魚の種類", class: 'me-3 cooking-memories-search-select-form'
