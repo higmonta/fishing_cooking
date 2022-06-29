@@ -19,9 +19,9 @@ class CalculateCookingTime
     cooking_id = Cooking.find_by(name: cooking_name).id
     fish_id = Fish.find_by(kind: fish_kind).id
     cooking_information = CookingInformation.find_by(cooking_id: cooking_id, fish_id: fish_id)
-    cooking_total_time = cooking_information.cooking_total_time  #T
-    rest_fish_time = cooking_information.rest_fish_time   #  t1
-    cooking_time = cooking_information.cooking_time    #  t2
+    cooking_total_time = cooking_information.cooking_total_time  #T:魚を捌いてある状態から料理して何分で完成するか(T=t1+t2)
+    rest_fish_time = cooking_information.rest_fish_time   # t1:料理する際に魚を何分寝かせるか
+    cooking_time = cooking_information.cooking_time    #  t2:魚を何分焼いたり揚げたりするか
     if rest_fish_time <= cooking_time
       if cookware_capacity <= let_foodstuff_capacity
         ((count/cookware_capacity).ceil - 1) * cooking_time + cooking_total_time
