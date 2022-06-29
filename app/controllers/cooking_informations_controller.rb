@@ -1,20 +1,16 @@
 class CookingInformationsController < ApplicationController
+  before_action :set_fishes
+  before_action :set_cookings, only: ["search_time", "search_calculate_cooking_time", "calculate_cooking_time"]
   def index
-    @fishes = Fish.all
     @handles = Handle.all
     @q = CookingInformation.ransack(params[:q])
     @cooking_informations = @q.result(distinct: true).includes(:cooking, :fish, :handle).page(params[:page])
   end
 
-  def search_time
-    @fishes = Fish.all
-    @cookings = Cooking.all
-  end
+  def search_time; end
 
   def search_calculate_cooking_time
-    @fishes = Fish.all
-    @cookings = Cooking.all
-    search_time_format = CookingSearchTimeForm.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name])
+    search_time_format = CookingSearchTimeForm.new(cooking_information_params)
     if search_time_format.save
       @fish_kind = params[:fish_kind]
       @cooking_name = params[:cooking_name]
@@ -27,11 +23,9 @@ class CookingInformationsController < ApplicationController
   end
 
   def calculate_cooking_time
-    @fishes = Fish.all
-    @cookings = Cooking.all
     @fish_kind = params[:fish_kind]
     @cooking_name = params[:cooking_name]
-    calculate_cooking_time_format = CalculateCookingTimeForm.new(let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
+    calculate_cooking_time_format = CalculateCookingTimeForm.new(calculate_cooking_time_form_params)
     if calculate_cooking_time_format.save
       calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
       @handle_total_time = calculate_cooking_time.calculate_handle_total_time
@@ -44,5 +38,23 @@ class CookingInformationsController < ApplicationController
       flash.now[:danger] = "計算フォームを全て入力してください"
       render "calculate_cooking_time_error.js.erb"
     end
+  end
+
+  private
+
+  def set_fishes
+    @fishes = Fish.all
+  end
+
+  def set_cookings
+    @cookings = Cooking.all
+  end
+
+  def cooking_information_params
+    params.permit(:fish_kind, :cooking_name)
+  end
+
+  def calculate_cooking_time_form_params
+    params.permit(:let_foodstuff_capacity, :cookware_capacity, :count)
   end
 end
