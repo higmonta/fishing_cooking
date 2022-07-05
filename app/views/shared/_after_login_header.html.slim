@@ -5,10 +5,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarNavAltMarkup
       .navbar-nav
-        = link_to '料理検索', cooking_informations_path, class: 'nav-link active menu'
-        = link_to '調理時間検索', search_time_cooking_informations_path, class: 'nav-link active menu'
-        = link_to '料理の履歴', cooking_memories_path, class: 'nav-link active menu'
-        = link_to '料理記録の登録', new_cooking_memory_path, class: 'nav-link active menu'
-        = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link active menu'
-        = link_to '利用規約', terms_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.search_cooking_header'}", cooking_informations_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.search_cooking_time_header'}", search_time_cooking_informations_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.cooking_memory_header'}", cooking_memories_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.cooking_memory_register_header'}", new_cooking_memory_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.logout_header'}", logout_path, method: :delete, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.terms_service_header'}", terms_path, class: 'nav-link active menu'
         = link_to current_user.name, profile_path, class: 'nav-link active menu'

@@ -1,0 +1,99 @@
+ja:
+  defaults:
+    login_required: 'ログインが必要です'
+    cooking_name: '料理名'
+    handle_kind: '捌き方'
+    handle_movie: '捌き方の動画'
+    cooking_site: '料理のレシピサイト'
+    cooking_recipe: '調理レシピ'
+    search_for_fish: '魚の種類(必須)'
+    search_for_cooking: '料理の種類(必須)'
+    search_for_handle: '捌き方(任意)'
+    total_work_time: '作業時間の合計(捌く時間+料理時間)'
+    total_handle_time: '捌く時間の合計'
+    total_cooking_time: '調理時間の合計'
+    minute: '(分)'
+    edit_button: '編集'
+    delete_button: '削除'
+    send_button: '送信'
+    search_cooking_header: '料理検索'
+    search_cooking_time_header: '調理時間検索'
+    cooking_memory_header: '料理の履歴'
+    cooking_memory_register_header: '料理記録の登録'
+    logout_header: 'ログアウト'
+    terms_service_header: '利用規約'
+    new_member_register_header: '新規会員登録'
+    login_header: 'ログイン'
+  cooking_informations:
+    index:
+      rough_ndication_time: '1匹あたりの目安時間'
+      handle_time: '捌く時間'
+      cooking_time: '調理時間'
+    search_calculate_cooking_time:
+      search_error_message: '検索フォームを全て入力してくだい'
+      count: '調理する魚の数'
+      count_placeholder: '料理する魚の数(必須)'
+      let_foodstuff_capacity: '魚を寝かせられるキャパシティ'
+      let_foodstuff_capacity_placeholder: '匹数(必須)'
+      cookware_capacity: '調理機材のキャパシティ'
+      cookware_capacity_placeholder: '匹数(必須)'
+      calculate_button: '合計の料理時間は?'
+    calculate_cooking_time:
+      calculate_error_message: '計算フォームを全て入力してください'
+  cooking_memories:
+    new:
+      cooking_sign_up: '料理履歴の新規登録'
+    create:
+      success_message: '登録に成功しました'
+      error_message: '登録に失敗しました'
+    index:
+      cooking_history: '料理の履歴'
+      delete_confirm_message: 'こちらの料理履歴を削除してもよろしいですか？'
+      fish_kind: '魚の種類'
+      cook_date: '料理をした日'
+      keyword: 'キーワード'
+      memo: 'メモ'
+    edit:
+      edit_cooking_history: '料理履歴の編集'
+    update:
+      success_message: '更新に成功しました'
+      error_message: '更新に失敗しました'
+    destroy:
+      success_message: '削除に成功しました'
+  password_resets:
+    new:
+      reset_password: 'パスワードのリセット'
+    create:
+      success_message: 'パスワードリセットのメールを送信しました'
+    edit:
+      update_password: 'パスワードの更新'
+    update:
+      success_message: 'パスワードの更新に成功しました'
+  profiles:
+    show:
+      member_information: '会員情報'
+      member_name: '名前'
+      member_email: 'メールアドレス'
+      honorific_title: '様'
+      reset_password: 'パスワードのリセット'
+    edit:
+      edit_profile: '会員情報の編集'
+    update:
+      success_message: '会員情報の変更に成功しました'
+      error_message: '登録に失敗しました'
+  user_sessions:
+    new:
+      login: 'ログイン'
+      new_member_register: '会員登録はこちら'
+      forget_password: 'パスワードを忘れた方はこちら'
+    create:
+      success_message: 'ログインに成功しました'
+      error_message: 'ログインに失敗しました'
+    destroy:
+      success_message: 'ログアウトに成功しました'
+  users:
+    new:
+      new_member_register: '新規会員登録'
+    create:
+      success_message: '登録に成功しました'
+      error_message: '登録に失敗しました'

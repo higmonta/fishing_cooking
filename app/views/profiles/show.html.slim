@@ -3,12 +3,12 @@
     .row.justify-content-md-center
       .col-md-6
         .mt-3.title.text-center
-          | 会員情報
+          | #{t '.member_information'}
     .row.justify-content-md-center
       .col-md-6
         .text-center
-          h3.mt-5 = "名前: #{@user.name} 様"
-          h3.mt-5 = "メールアドレス: #{@user.email}"
-          h3.mt-5 = link_to 'パスワードのリセット', new_password_reset_path
-          .mt-5 = link_to '編集', edit_profile_path, class: 'btn btn-success'
+          h3.mt-5 = "#{t '.member_name'}: #{@user.name} #{t '.honorific_title'}"
+          h3.mt-5 = "#{t '.member_email'}: #{@user.email}"
+          h3.mt-5 = link_to "#{t '.reset_password'}", new_password_reset_path
+          .mt-5 = link_to "#{t 'defaults.edit_button'}", edit_profile_path, class: 'btn btn-success'
   

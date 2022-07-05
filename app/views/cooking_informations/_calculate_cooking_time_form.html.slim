@@ -1,17 +1,17 @@
 = form_with url: calculate_cooking_time_cooking_informations_path do |f|
   = render partial: 'shared/flash_message'
   .mt-4
-    = f.label :count, '調理する魚の数:'
-    = f.number_field :count, min: 1, placeholder: '料理する魚の数(必須)', value: params[:count], class: 'calculate-fish-count-form text-center'
+    = f.label :count, "#{t 'cooking_informations.search_calculate_cooking_time.count'}:"
+    = f.number_field :count, min: 1, placeholder: "#{t 'cooking_informations.search_calculate_cooking_time.count_placeholder'}", value: params[:count], class: 'calculate-fish-count-form text-center'
   .mt-4
-    = f.label :let_foodstuff_capacity, '魚を寝かせられるキャパシティ:'
-    = f.number_field :let_foodstuff_capacity, min: 0.5, step: 0.5, placeholder: '匹数(必須)', value: params[:let_foodstuff_capacity], class: 'calculate-cooking-capacity-form mt-2 text-center'
+    = f.label :let_foodstuff_capacity, "#{t 'cooking_informations.search_calculate_cooking_time.let_foodstuff_capacity'}:"
+    = f.number_field :let_foodstuff_capacity, min: 0.5, step: 0.5, placeholder: "#{t 'cooking_informations.search_calculate_cooking_time.let_foodstuff_capacity_placeholder'}", value: params[:let_foodstuff_capacity], class: 'calculate-cooking-capacity-form mt-2 text-center'
     .fs-6 ※料理する際にこの魚を1度で何匹寝かせられるか(例:魚に塩を振って、まな板に半身しか置いて寝かせられない場合は、0.5と入力)
   .mt-4
-    = f.label :cookware_capacity, '調理機材のキャパシティ:'
-    = f.number_field :cookware_capacity, min: 0.5, step: 0.5, placeholder: '匹数(必須)', value: params[:cookware_capacity], class: 'calculate-cooking-capacity-form mt-2 text-center'
+    = f.label :cookware_capacity, "#{t 'cooking_informations.search_calculate_cooking_time.cookware_capacity'}:"
+    = f.number_field :cookware_capacity, min: 0.5, step: 0.5, placeholder: "#{t 'cooking_informations.search_calculate_cooking_time.cookware_capacity_placeholder'}", value: params[:cookware_capacity], class: 'calculate-cooking-capacity-form mt-2 text-center'
     .fs-6 ※この料理を際に魚を焼いたり揚げたりなど火を通す工程がある場合(刺身などは、火を通さないので0で入力する)は、フライパンやフライヤーなどのキャパシティを入力する(例1:フライパンの大きさが魚の半身しか焼けない場合は、0.5と入力)(例2:フライヤーの大きさが魚5匹分を揚げられる場合は、5と入力)
   .mt-4
     = hidden_field_tag :fish_kind, @fish_kind
     = hidden_field_tag :cooking_name, @cooking_name
-  = f.submit '合計の料理時間は?', class: 'btn btn-primary calculate-cooking-time-button mt-2'
+  = f.submit "#{t 'cooking_informations.search_calculate_cooking_time.calculate_button'}", class: 'btn btn-primary calculate-cooking-time-button mt-2'

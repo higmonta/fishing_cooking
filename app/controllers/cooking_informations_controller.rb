@@ -17,7 +17,7 @@ class CookingInformationsController < ApplicationController
       @handle_pattern = search_time_format.handle_search
       @cooking_information = search_time_format.cooking_information_search
     else
-      flash.now[:danger] = "検索フォームを全て入力してくだい"
+      flash.now[:danger] = t '.search_error_message'
       render :search_time
     end
   end
@@ -35,7 +35,7 @@ class CookingInformationsController < ApplicationController
     else
       @fish_kind = params[:fish_kind]
       @cooking_name = params[:cooking_name]
-      flash.now[:danger] = "計算フォームを全て入力してください"
+      flash.now[:danger] = t '.calculate_error_message'
       render "calculate_cooking_time_error.js.erb"
     end
   end

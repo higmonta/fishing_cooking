@@ -5,8 +5,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
       span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarNavAltMarkup
       .navbar-nav
-        = link_to '料理検索', cooking_informations_path, class: 'nav-link active menu'
-        = link_to '調理時間検索', search_time_cooking_informations_path, class: 'nav-link active menu'
-        = link_to '新規会員登録', new_user_path, class: 'nav-link active menu'
-        = link_to 'ログイン', login_path, class: 'nav-link active menu'
-        = link_to '利用規約', terms_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.search_cooking_header'}", cooking_informations_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.search_cooking_time_header'}", search_time_cooking_informations_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.new_member_register_header'}", new_user_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.login_header'}", login_path, class: 'nav-link active menu'
+        = link_to "#{t 'defaults.terms_service_header'}", terms_path, class: 'nav-link active menu'

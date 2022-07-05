@@ -3,7 +3,7 @@
     .row.justify-content-md-center
       .col-md-10
         .mt-3.title.text-center
-          | パスワードのリセット
+          | #{t '.reset_password'}
     .row.justify-content-md-center
       .col-6
         = form_with url: password_resets_path, local: true do |f|
@@ -11,4 +11,4 @@
             = f.label :email, User.human_attribute_name(:email)
             = f.email_field :email, class: 'form-control'
           .mt-4.text-center
-            = f.submit "送信", class: 'btn btn-primary'
+            = f.submit "#{t 'defaults.send_button'}", class: 'btn btn-primary'

@@ -1,18 +1,18 @@
 .cooking-memory-list.mt-5
   .row.justify-content-md-center
     .col-md-10.text-end.mt-3
-      = link_to '編集', edit_cooking_memory_path(cooking_memory), class: 'me-4 btn btn-success'
-      = link_to '削除', cooking_memory_path(cooking_memory), method: :delete, data: { confirm: "こちらの料理履歴を削除してもよろしいですか？" }, class: 'btn btn-danger'
+      = link_to "#{t 'defaults.edit_button'}", edit_cooking_memory_path(cooking_memory), class: 'me-4 btn btn-success'
+      = link_to "#{t 'defaults.delete_button'}", cooking_memory_path(cooking_memory), method: :delete, data: { confirm: "#{t 'cooking_memories.index.delete_confirm_message'}" }, class: 'btn btn-danger'
   .row.justify-content-md-center.mt-4
     .col-md-6.fs-3.text-center.cooking-memories-detail
-      ' 料理名:
+      ' #{t 'defaults.cooking_name'}
       = cooking_memory.cooking_name
       <br>
-      ' 魚の種類:
+      ' #{t 'cooking_memories.index.fish_kind'}:
       = cooking_memory.fish_name
       <br>
       - if cooking_memory.cooking_date.present?
-        ' 料理をした日:
+        ' #{t 'cooking_memories.index.cook_date'}:
         = l cooking_memory.cooking_date
         <br>
     .col-md-6
@@ -20,5 +20,5 @@
   - if cooking_memory.memo.present?
     .row.justify-content-md-center
       .col-md-8.cooking-memories-memo-column.mt-4.p-4
-        .fs-3.text-center.mb-3.title メモ
+        .fs-3.text-center.mb-3.title #{t 'cooking_memories.index.memo'}
         = simple_format(h(cooking_memory.memo))

@@ -16,7 +16,7 @@ class PasswordResetsController < ApplicationController
         
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
-    flash[:success] = "パスワードリセットのメールを送信しました"
+    flash[:success] = t '.success_message'
     redirect_to login_path
   end
     
@@ -45,7 +45,7 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     # the next line clears the temporary token and updates the password
     if @user.change_password(params[:user][:password])
-      flash[:success] = "パスワードの更新に成功しました"
+      flash[:success] = t '.success_message'
       redirect_to login_path
     else
       render :action => "edit"

@@ -9,10 +9,10 @@ class CookingMemoriesController < ApplicationController
     @cooking_memory = current_user.cooking_memories.new(cooking_memory_params)
     @cooking_memory.need_default_image?
     if @cooking_memory.save
-      flash[:success] = '登録に成功しました'
+      flash[:success] = t '.success_message'
       redirect_to cooking_memories_path
     else
-      flash.now[:danger] = '登録に失敗しました'
+      flash.now[:danger] = t '.error_message'
       render :new
     end
   end
@@ -30,10 +30,10 @@ class CookingMemoriesController < ApplicationController
   def update
     @cooking_memory = CookingMemory.find(params[:id])
     if @cooking_memory.update(cooking_memory_params)
-      flash[:success] = '更新に成功しました'
+      flash[:success] = t '.success_message'
       redirect_to cooking_memories_path
     else
-      flash.now[:danger] = '更新に失敗しました'
+      flash.now[:danger] = t '.error_message'
       render :edit
     end
   end
@@ -41,7 +41,7 @@ class CookingMemoriesController < ApplicationController
   def destroy
     cooking_memory = CookingMemory.find(params[:id])
     cooking_memory.destroy
-    flash[:success] = '削除に成功しました'
+    flash[:success] = t '.success_message'
     redirect_to cooking_memories_path
   end
 

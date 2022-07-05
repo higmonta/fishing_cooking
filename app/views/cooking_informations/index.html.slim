@@ -4,8 +4,8 @@
       .col-md-10
         = search_form_for @q, url: cooking_informations_path do |f|
           .mt-4
-            = f.collection_select :fish_kind_eq, @fishes, :kind, :kind, { include_blank: '魚の種類(必須)' }, {class: 'search-select-form'}
-            = f.collection_select :handle_pattern_eq, @handles, :pattern, :pattern, { include_blank: '捌き方(任意)' }, {class: 'search-select-form'}
+            = f.collection_select :fish_kind_eq, @fishes, :kind, :kind, { include_blank: "#{t 'defaults.search_for_fish'}" }, {class: 'search-select-form'}
+            = f.collection_select :handle_pattern_eq, @handles, :pattern, :pattern, { include_blank: "#{t 'defaults.search_for_fish'}" }, {class: 'search-select-form'}
             = button_tag type: 'submit', class: 'btn btn-primary search-button' do
               i.fas.fa-search
     = render @cooking_informations

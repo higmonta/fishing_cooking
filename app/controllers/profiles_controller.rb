@@ -12,10 +12,10 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      flash[:success] = "会員情報の変更に成功しました"
+      flash[:success] = t '.success_message'
       redirect_to profile_path
     else
-      flash.now[:danger] = "登録に失敗しました"
+      flash.now[:danger] = t '.error_message'
       render :edit
     end
   end
