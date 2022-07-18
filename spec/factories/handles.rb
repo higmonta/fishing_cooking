@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :handle do
-    pattern { 'テスト' }
+    sequence(:pattern, 'pattern_1')
   end
 end
