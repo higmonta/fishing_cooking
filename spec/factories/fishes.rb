@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :fish do
-    kind { 'テスト' }
+    sequence(:kind, 'kind_1')
   end
 end
