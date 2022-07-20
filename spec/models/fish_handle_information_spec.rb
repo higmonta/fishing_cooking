@@ -24,9 +24,11 @@ RSpec.describe FishHandleInformation, type: :model do
     end
 
     context 'fish_idとhandle_idが互いにユニークになっていない場合' do
-      xit 'バリデーションエラーになる' do
-        fish_handle_information = build(:fish_handle_information)
-        fish_handle_information.valid?
+      it 'バリデーションエラーになる' do
+        fish_handle_information1 = create(:fish_handle_information)
+        fish_handle_information2 = build(:fish_handle_information, fish_id: fish_handle_information1.fish_id, handle_id: fish_handle_information1.handle_id)
+        fish_handle_information2.valid?
+        expect(fish_handle_information2.errors[:fish_id]).to include('はすでに存在します')
       end
     end
   end
