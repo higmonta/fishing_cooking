@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_143856) do
+ActiveRecord::Schema.define(version: 2022_07_20_174154) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2022_06_05_143856) do
     t.string "handle_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["fish_id", "handle_id"], name: "index_fish_handle_informations_on_fish_id_and_handle_id", unique: true
     t.index ["fish_id"], name: "index_fish_handle_informations_on_fish_id"
     t.index ["handle_id"], name: "index_fish_handle_informations_on_handle_id"
   end
