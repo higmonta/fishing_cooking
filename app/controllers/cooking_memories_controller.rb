@@ -24,6 +24,9 @@ class CookingMemoriesController < ApplicationController
 
   def edit
     @cooking_memory = CookingMemory.find(params[:id])
+    unless @cooking_memory.user == current_user
+      redirect_to cooking_memories_path
+    end
   end
 
   def update
