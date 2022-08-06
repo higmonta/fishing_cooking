@@ -13,7 +13,10 @@
     = f.label :cooking_memory_image
     = f.file_field :cooking_memory_image, class: 'form-control', id: 'js-cooking-memory-image'
     - if @cooking_memory.cooking_memory_image.attached?
-      = image_tag @cooking_memory.cooking_memory_image.variant(resize: '350'), id: 'preview'
+      = image_tag @cooking_memory.cooking_memory_image.variant(resize: '350'), id: 'preview', class: 'js-destroy-cooking-image'
+      .mt-4.js-destroy-cooking-image-button
+        - unless @cooking_memory.id == nil
+          = link_to "#{t 'defaults.delete_cooking_memory_image_button'}", destroy_image_cooking_memory_path(@cooking_memory), method: :delete, class: 'btn btn-danger', remote: true
     - else
       = image_tag 'cooking_memory/default.png', id: 'preview'
   .mt-4.text-center

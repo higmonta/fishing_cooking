@@ -24,6 +24,7 @@ ja:
     terms_service_header: '利用規約'
     new_member_register_header: '新規会員登録'
     login_header: 'ログイン'
+    delete_cooking_memory_image_button: '画像を削除'
   cooking_informations:
     index:
       rough_ndication_time: '1匹あたりの目安時間'

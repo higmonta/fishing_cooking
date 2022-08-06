@@ -47,6 +47,11 @@ class CookingMemoriesController < ApplicationController
     redirect_to cooking_memories_path
   end
 
+  def destroy_image
+    cooking_memory = CookingMemory.find(params[:id])
+    cooking_memory.cooking_memory_image.purge
+  end
+
   private
 
   def cooking_memory_params

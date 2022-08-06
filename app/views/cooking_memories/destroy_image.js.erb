@@ -1,0 +1,7 @@
+var after_destroy_cooking_image = `
+<%= image_tag 'cooking_memory/default.png', id: 'preview' %>
+`;
+
+$(".js-destroy-cooking-image").replaceWith(after_destroy_cooking_image);
+
+$(".js-destroy-cooking-image-button").remove();
