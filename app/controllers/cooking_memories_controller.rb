@@ -7,7 +7,6 @@ class CookingMemoriesController < ApplicationController
 
   def create
     @cooking_memory = current_user.cooking_memories.new(cooking_memory_params)
-    @cooking_memory.need_default_image?
     if @cooking_memory.save
       flash[:success] = t '.success_message'
       redirect_to cooking_memories_path
