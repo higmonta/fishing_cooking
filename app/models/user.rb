@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  validates :email, uniqueness: { case_sensitive: true }, presence: true
+  validates :email, uniqueness: { case_sensitive: false }, presence: true
   validates :name, presence: true
 
   has_many :cooking_memories, dependent: :destroy
