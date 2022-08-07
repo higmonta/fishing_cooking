@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
       it 'パスワードが無い場合バリデーションエラーになる' do
         user = build(:user, password: nil)
         user.valid?
-        expect(user.errors[:password]).to include('は3文字以上で入力してください')
+        expect(user.errors[:password]).to include('は10文字以上で入力してください')
       end
 
       it '確認用パスワードが無い場合バリデーションエラーになる' do
@@ -44,17 +44,17 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'パスワードが3文字未満の場合' do
+    context 'パスワードが10文字未満の場合' do
       it 'バリデーションエラーになる' do
         user = build(:user, password: '12', password_confirmation: '12')
         user.valid?
-        expect(user.errors[:password]).to include('は3文字以上で入力してください')
+        expect(user.errors[:password]).to include('は10文字以上で入力してください')
       end
     end
 
     context 'パスワードと確認パスワードが一致しない場合' do
       it 'バリデーションエラーになる' do
-        user = build(:user, password: '12345aA', password_confirmation: '12345AA')
+        user = build(:user, password: '123456789aA', password_confirmation: '123456789AA')
         user.valid?
         expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
       end
