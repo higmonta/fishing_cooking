@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
     # This is to not leak information to attackers about which emails exist in the system.
     if logged_in?
       flash.now[:success] = t '.success_message'
-      render template: 'profiles/show'
+      render template: 'users/show'
     else
       flash[:success] = t '.success_message'
       redirect_to login_path

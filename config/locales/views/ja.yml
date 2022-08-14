@@ -70,18 +70,6 @@ ja:
       update_password: 'パスワードの更新'
     update:
       success_message: 'パスワードの更新に成功しました'
-  profiles:
-    show:
-      member_information: '会員情報'
-      member_name: '名前'
-      member_email: 'メールアドレス'
-      honorific_title: '様'
-      reset_password: 'パスワードのリセット'
-    edit:
-      edit_profile: '会員情報の編集'
-    update:
-      success_message: '会員情報の変更に成功しました'
-      error_message: '登録に失敗しました'
   user_sessions:
     new:
       login: 'ログイン'
@@ -97,4 +85,15 @@ ja:
       new_member_register: '新規会員登録'
     create:
       success_message: '登録に成功しました'
+      error_message: '登録に失敗しました'
+    show:
+      member_information: '会員情報'
+      member_name: '名前'
+      member_email: 'メールアドレス'
+      honorific_title: '様'
+      reset_password: 'パスワードのリセット'
+    edit:
+      edit_profile: '会員情報の編集'
+    update:
+      success_message: '会員情報の変更に成功しました'
       error_message: '登録に失敗しました'
