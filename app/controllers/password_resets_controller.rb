@@ -16,8 +16,13 @@ class PasswordResetsController < ApplicationController
         
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
-    flash[:success] = t '.success_message'
-    redirect_to login_path
+    if logged_in?
+      flash.now[:success] = t '.success_message'
+      render template: 'profiles/show'
+    else
+      flash[:success] = t '.success_message'
+      redirect_to login_path
+    end
   end
     
   # This is the reset password form.
