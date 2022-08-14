@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    if @user.update(profile_params)
+    @user.attributes = profile_params
+    if @user.save(context: :not_password_validation)
       flash[:success] = t '.success_message'
       redirect_to profile_path
     else
