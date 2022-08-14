@@ -51,8 +51,13 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     # the next line clears the temporary token and updates the password
     if @user.valid? && @user.change_password(params[:user][:password])
-      flash[:success] = t '.success_message'
-      redirect_to login_path
+      if logged_in?
+        flash[:success] = t '.success_message'
+        render template: 'users/show'
+      else
+        flash[:success] = t '.success_message'
+        redirect_to login_path
+      end
     else
       render :edit
     end
