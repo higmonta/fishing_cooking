@@ -53,7 +53,7 @@ class PasswordResetsController < ApplicationController
     if @user.valid? && @user.change_password(params[:user][:password])
       if logged_in?
         flash[:success] = t '.success_message'
-        render template: 'users/show'
+        redirect_to profile_path
       else
         flash[:success] = t '.success_message'
         redirect_to login_path
