@@ -25,11 +25,17 @@ ja:
     new_member_register_header: '新規会員登録'
     login_header: 'ログイン'
     delete_cooking_memory_image_button: '画像を削除'
+  static_pages:
+    terms:
+      title: '利用規約'
   cooking_informations:
     index:
       rough_ndication_time: '1匹あたりの目安時間'
       handle_time: '捌く時間'
       cooking_time: '調理時間'
+      title: '料理検索'
+    search_time:
+      title: '調理時間検索'
     search_calculate_cooking_time:
       search_error_message: '検索フォームを全て入力してくだい'
       count: '調理する魚の数'
@@ -39,11 +45,13 @@ ja:
       cookware_capacity: '調理機材のキャパシティ'
       cookware_capacity_placeholder: '匹数(必須)'
       calculate_button: '合計の料理時間は?'
+      title: '調理時間検索'
     calculate_cooking_time:
       calculate_error_message: '計算フォームを全て入力してください'
   cooking_memories:
     new:
       cooking_sign_up: '料理履歴の新規登録'
+      title: '料理記録の登録'
     create:
       success_message: '登録に成功しました'
       error_message: '登録に失敗しました'
@@ -54,8 +62,10 @@ ja:
       cook_date: '料理をした日'
       keyword: 'キーワード'
       memo: 'メモ'
+      title: '料理の履歴'
     edit:
       edit_cooking_history: '料理履歴の編集'
+      title: '料理履歴の編集'
     update:
       success_message: '更新に成功しました'
       error_message: '更新に失敗しました'
@@ -64,10 +74,12 @@ ja:
   password_resets:
     new:
       reset_password: 'パスワードのリセット'
+      title: 'パスワードのリセット'
     create:
       success_message: 'パスワードリセットのメールを送信しました'
     edit:
       update_password: 'パスワードの更新'
+      title: 'パスワードの更新'
     update:
       success_message: 'パスワードの更新に成功しました'
   user_sessions:
@@ -75,6 +87,7 @@ ja:
       login: 'ログイン'
       new_member_register: '会員登録はこちら'
       forget_password: 'パスワードを忘れた方はこちら'
+      title: 'ログイン'
     create:
       success_message: 'ログインに成功しました'
       error_message: 'ログインに失敗しました'
@@ -83,6 +96,7 @@ ja:
   users:
     new:
       new_member_register: '新規会員登録'
+      title: '新規会員登録'
     create:
       success_message: '登録に成功しました'
       error_message: '登録に失敗しました'
@@ -92,8 +106,10 @@ ja:
       member_email: 'メールアドレス'
       honorific_title: '様'
       reset_password: 'パスワードのリセット'
+      title: '会員情報'
     edit:
       edit_profile: '会員情報の編集'
+      title: '会員情報の編集'
     update:
       success_message: '会員情報の変更に成功しました'
       error_message: '登録に失敗しました'
