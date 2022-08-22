@@ -17,5 +17,5 @@
           .mt-4.text-center
             = link_to "#{t '.new_member_register'}", new_user_path, class: 'me-5'
             = link_to "#{t '.forget_password'}", new_password_reset_path
-          .mt-4.text-center
+          .mt-4.text-center.login-button
             = f.submit "#{t '.login'}", class: 'btn btn-primary'
