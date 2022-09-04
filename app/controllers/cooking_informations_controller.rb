@@ -1,6 +1,7 @@
 class CookingInformationsController < ApplicationController
   before_action :set_fishes
   before_action :set_cookings, only: ["search_time", "search_calculate_cooking_time", "calculate_cooking_time"]
+  
   def index
     @handles = Handle.all
     @q = CookingInformation.ransack(params[:q])
