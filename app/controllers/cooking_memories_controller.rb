@@ -6,7 +6,7 @@ class CookingMemoriesController < ApplicationController
   end
 
   def create
-    @cooking_memory = current_user.cooking_memories.new(cooking_memory_params)
+    @cooking_memory = current_user.cooking_memories.build(cooking_memory_params)
     if @cooking_memory.save
       flash[:success] = t '.success_message'
       redirect_to cooking_memories_path
@@ -19,7 +19,7 @@ class CookingMemoriesController < ApplicationController
   def index
     @q = CookingMemory.ransack(params[:q])
     @cooking_memories = @q.result(distinct: true)
-    @current_user_cooking_memories = @cooking_memories.where(user_id: current_user.id)
+    @current_user_cooking_memories = current_user.cooking_memories
   end
 
   def edit
