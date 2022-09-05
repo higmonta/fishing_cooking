@@ -1,0 +1,1 @@
+import '../javascripts/search_cooking_select_box';

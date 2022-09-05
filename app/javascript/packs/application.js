@@ -11,10 +11,6 @@ require('bootstrap')
 
 import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
-import '../javascripts/search_cooking_select_box';
-import '../javascripts/search_calculate_cooking_time_select_box';
-import '../javascripts/search_cooking_memory';
-import '../javascripts/image_preview';
 window.$ = $;
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
