@@ -416,10 +416,6 @@ RSpec.describe 'CookingMemories', type: :system do
         fill_in 'q_fish_name_cont', with: 'test_fish_name'
         find('.cooking-memories-search-button').click
         expect(page).to have_content cooking_memory.fish_name
-        expect(page).to have_content cooking_memory.fish_name
-        expect(page).to have_content cooking_memory.fish_name
-        expect(page).to_not have_content cooking_memory_another_fish_name.fish_name
-        expect(page).to_not have_content cooking_memory_another_fish_name.fish_name
         expect(page).to_not have_content cooking_memory_another_fish_name.fish_name
         expect(current_path).to eq cooking_memories_path
       end
