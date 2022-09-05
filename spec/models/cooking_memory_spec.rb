@@ -28,20 +28,20 @@ RSpec.describe CookingMemory, type: :model do
     context '画像を添付していない時' do
       context '全ての属性が存在する場合' do
         it 'バリデーションエラーにならない' do
-          not_attached_image_cooking_memory = build(:cooking_memory, :not_attached_image)
+          not_attached_image_cooking_memory = build(:cooking_memory)
           expect(not_attached_image_cooking_memory).to be_valid
         end
       end
   
       context '必須項目の属性が存在しない場合' do
         it '料理の名前属性が無い場合バリデーションエラーになる' do
-          not_attached_image_cooking_memory = build(:cooking_memory, :not_attached_image, cooking_name: nil)
+          not_attached_image_cooking_memory = build(:cooking_memory, cooking_name: nil)
           not_attached_image_cooking_memory.valid?
           expect(not_attached_image_cooking_memory.errors[:cooking_name]).to include('を入力してください')
         end
   
         it '料理の魚の種類属性が無い場合バリデーションエラーになる' do
-          not_attached_image_cooking_memory = build(:cooking_memory, :not_attached_image, fish_name: nil)
+          not_attached_image_cooking_memory = build(:cooking_memory, fish_name: nil)
           not_attached_image_cooking_memory.valid?
           expect(not_attached_image_cooking_memory.errors[:fish_name]).to include('を入力してください')
         end
