@@ -406,7 +406,7 @@ RSpec.describe 'CookingMemories', type: :system do
   describe 'ログイン後の料理画像を添付する際の画像プレビュー機能の検証' do
     before { login_as(user) }
 
-    context '料理履歴を登録する際に画像を添付する時' , js: true do
+    context '料理履歴を登録する際に画像を添付する時', js: true do
       it '添付した画像がプレビューされる' do
         visit new_cooking_memory_path
         attach_file 'cooking_memory[cooking_memory_image]', "#{Rails.root}/spec/fixtures/images/test1_image.jpg"
@@ -414,7 +414,7 @@ RSpec.describe 'CookingMemories', type: :system do
       end
     end
 
-    context '料理履歴を編集する際に画像を添付する時' , js: true do
+    context '料理履歴を編集する際に画像を添付する時', js: true do
       let!(:cooking_memory) { create(:cooking_memory, user: user) }
 
       it '添付した画像がプレビューされる' do
@@ -422,6 +422,47 @@ RSpec.describe 'CookingMemories', type: :system do
         click_on '編集'
         attach_file 'cooking_memory[cooking_memory_image]', "#{Rails.root}/spec/fixtures/images/test1_image.jpg"
         expect(page).to_not have_selector("img[src^='/assets/cooking_memory/default']")
+      end
+    end
+  end
+
+  describe '料理履歴検索フォームの動的な動作の検証' do
+    before do
+      login_as(user)
+      visit cooking_memories_path
+    end
+
+    context '料理をした日の最初の欄をクリックした時' do
+      it 'フォームがsearch型からdate型に変わる', js: true do
+        find('#q_cooking_date_gteq').click
+        begin_cooking_date_search_form = find('#q_cooking_date_gteq')
+        expect(begin_cooking_date_search_form['type']).to eq 'date'
+      end
+    end
+
+    context '料理をした日の最初の欄をクリックした後に違う場所をクリックした時' do
+      it 'フォームがdate型からsearch型に変わる', js: true do
+        find('#q_cooking_date_gteq').click
+        find('.title').click
+        begin_cooking_date_search_form = find('#q_cooking_date_gteq')
+        expect(begin_cooking_date_search_form['type']).to eq 'search'
+      end
+    end
+
+    context '料理をした日の最後の欄をクリックした時' do
+      it 'フォームがsearch型からdate型に変わる', js: true do
+        find('#q_cooking_date_lteq').click
+        end_cooking_date_search_form = find('#q_cooking_date_lteq')
+        expect(end_cooking_date_search_form['type']).to eq 'date'
+      end
+    end
+
+    context '料理をした日の最後の欄をクリックした後に違う場所をクリックした時' do
+      it 'フォームがdate型からsearch型に変わる', js: true do
+        find('#q_cooking_date_lteq').click
+        find('.title').click
+        end_cooking_date_search_form = find('#q_cooking_date_lteq')
+        expect(end_cooking_date_search_form['type']).to eq 'search'
       end
     end
   end
