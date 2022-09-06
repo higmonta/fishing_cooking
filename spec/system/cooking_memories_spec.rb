@@ -403,6 +403,29 @@ RSpec.describe 'CookingMemories', type: :system do
     end
   end
 
+  describe 'ログイン後の料理画像を添付する際の画像プレビュー機能の検証' do
+    before { login_as(user) }
+
+    context '料理履歴を登録する際に画像を添付する時' , js: true do
+      it '添付した画像がプレビューされる' do
+        visit new_cooking_memory_path
+        attach_file 'cooking_memory[cooking_memory_image]', "#{Rails.root}/spec/fixtures/images/test1_image.jpg"
+        expect(page).to_not have_selector("img[src^='/assets/cooking_memory/default']")
+      end
+    end
+
+    context '料理履歴を編集する際に画像を添付する時' , js: true do
+      let!(:cooking_memory) { create(:cooking_memory, user: user) }
+
+      it '添付した画像がプレビューされる' do
+        visit cooking_memories_path
+        click_on '編集'
+        attach_file 'cooking_memory[cooking_memory_image]', "#{Rails.root}/spec/fixtures/images/test1_image.jpg"
+        expect(page).to_not have_selector("img[src^='/assets/cooking_memory/default']")
+      end
+    end
+  end
+
   describe 'ログイン後の料理履歴の検索' do
     before do
       login_as(user)
