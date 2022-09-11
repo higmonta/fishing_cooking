@@ -3,7 +3,7 @@ cookings = %w[フライ 刺身 塩焼き 唐揚げ カルパッチョ 天ぷら 
 fish = %w[アジ マメアジ イカ サバ マハゼ カサゴ タチウオ カワハギ イシモチ メジナ タコ]
 handles = %w[内臓処理 内臓処理+ゼイゴの処理 内臓処理+皮を剥ぐ 内臓処理+ウロコの処理 3枚おろし 3枚おろし+ゼイゴの処理
              3枚おろし+ゼイゴの処理+骨の処理 3枚おろし+ゼイゴの処理+骨の処理+皮を剥ぐ 3枚おろし+ウロコの処理 背開き+骨の処理
-             背開き+ゼイゴの処理]
+             背開き+ゼイゴの処理 下処理(ぬめりを取るなど)+茹でる]
 
 aji_cookings = [
   { cooking_name: 'フライ', cooking_image: 'フライ.jpg',
@@ -165,6 +165,23 @@ mejina_cookings = [
     handle_pattern: '3枚おろし+ウロコの処理', cooking_total_time: 5, rest_fish_time: 0, cooking_time: 1 }
 ]
 
+tako_cookings = [
+  { cooking_name: '刺身', cooking_image: '刺身.jpg', cooking_url: 'https://delishkitchen.tv/recipes/380127811270083664',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 0, rest_fish_time: 0, cooking_time: 0 },
+  { cooking_name: '唐揚げ', cooking_image: '唐揚げ.jpg', cooking_url: 'https://www.kurashiru.com/recipes/6aa51ad7-f05f-4ccb-8d50-dd0176dc977a',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 30, rest_fish_time: 15, cooking_time: 3 },
+  { cooking_name: 'カルパッチョ', cooking_image: 'カルパッチョ.jpg', cooking_url: 'https://www.sirogohan.com/recipe/takokarupa/',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 10, rest_fish_time: 0, cooking_time: 3 },
+  { cooking_name: '磯辺揚げ', cooking_image: '磯辺揚げ.jpg', cooking_url: 'https://www.kurashiru.com/recipes/47d4301d-a088-430a-ba83-05d3436f6f1b',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 80, rest_fish_time: 60, cooking_time: 3 },
+  { cooking_name: '煮付け', cooking_image: '煮付け.jpg', cooking_url: 'https://cookpad.com/recipe/2232854',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 40, rest_fish_time: 0, cooking_time: 30 },
+  { cooking_name: 'ソテー', cooking_image: 'ソテー.jpg', cooking_url: 'https://www.kurashiru.com/recipes/b00137d1-d3f7-4da2-871a-b431c65968ed',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 2 },
+  { cooking_name: '炊き込みご飯', cooking_image: '炊き込みご飯.jpg', cooking_url: 'https://www.kurashiru.com/recipes/781bca7b-8c5c-4c97-a775-29f006b9eb99',
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 50, rest_fish_time: 0, cooking_time: 40 }
+]
+
 aji_handles = [
   { handle_pattern: '背開き+ゼイゴの処理', handle_time: 7, handle_url: 'https://www.youtube.com/embed/SCiRzd_4qoQ' },
   { handle_pattern: '3枚おろし+ゼイゴの処理', handle_time: 7, handle_url: 'https://www.youtube.com/embed/SCiRzd_4qoQ' },
@@ -212,6 +229,10 @@ ishimochi_handles = [
 mejina_handles = [
   { handle_pattern: '内臓処理+ウロコの処理', handle_time: 6, handle_url: 'https://www.youtube.com/embed/m3XAxhlTpYw' },
   { handle_pattern: '3枚おろし+ウロコの処理', handle_time: 10, handle_url: 'https://www.youtube.com/embed/57G0Rdklml0' }
+]
+
+tako_handles = [
+  { handle_pattern: '下処理(ぬめりを取るなど)+茹でる', handle_time: 15, handle_url: 'https://www.youtube.com/embed/dZ4Z8fsjkek'}
 ]
 
 cookings.each do |cooking|
@@ -424,4 +445,24 @@ mejina_handles.each do |mejina_handle|
   handle_time = mejina_handle[:handle_time]
   handle_url = mejina_handle[:handle_url]
   mejina.fish_handle_informations.create(handle_id: handle_id, handle_time: handle_time, handle_url: handle_url)
+end
+
+tako = Fish.find_by(kind: 'タコ')
+tako_cookings.each do |tako_cooking|
+  cooking_id = Cooking.find_by(name: tako_cooking[:cooking_name]).id
+  image = "cooking/tako/#{tako_cooking[:cooking_image]}"
+  cooking_url = tako_cooking[:cooking_url]
+  handle_id = Handle.find_by(pattern: tako_cooking[:handle_pattern]).id
+  cooking_total_time = tako_cooking[:cooking_total_time]
+  rest_fish_time = tako_cooking[:rest_fish_time]
+  cooking_time = tako_cooking[:cooking_time]
+  tako.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
+                                     handle_id: handle_id, cooking_total_time: cooking_total_time,
+                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time)
+end
+tako_handles.each do |tako_handle|
+  handle_id = Handle.find_by(pattern: tako_handle[:handle_pattern]).id
+  handle_time = tako_handle[:handle_time]
+  handle_url = tako_handle[:handle_url]
+  tako.fish_handle_informations.create(handle_id: handle_id, handle_time: handle_time, handle_url: handle_url)
 end
