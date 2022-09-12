@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(version: 2022_09_12_164651) do
   end
 
   create_table "cookwares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["type"], name: "index_cookwares_on_type", unique: true
+    t.index ["name"], name: "index_cookwares_on_name", unique: true
   end
 
   create_table "fish_handle_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
