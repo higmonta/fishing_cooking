@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_164651) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rest_fish_time", null: false
     t.integer "cooking_total_time", null: false
-    t.bigint "cookware_id", null: false
+    t.bigint "cookware_id"
     t.index ["cooking_id", "fish_id"], name: "index_cooking_informations_on_cooking_id_and_fish_id", unique: true
     t.index ["cooking_id"], name: "index_cooking_informations_on_cooking_id"
     t.index ["cookware_id"], name: "index_cooking_informations_on_cookware_id"
