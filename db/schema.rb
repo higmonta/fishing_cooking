@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_153633) do
+ActiveRecord::Schema.define(version: 2022_09_12_160527) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 2022_09_12_153633) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "rest_fish_time", null: false
     t.integer "cooking_total_time", null: false
+    t.bigint "cookware_id", null: false
     t.index ["cooking_id", "fish_id"], name: "index_cooking_informations_on_cooking_id_and_fish_id", unique: true
     t.index ["cooking_id"], name: "index_cooking_informations_on_cooking_id"
+    t.index ["cookware_id"], name: "index_cooking_informations_on_cookware_id"
     t.index ["fish_id", "cooking_id", "handle_id"], name: "fish_id_cooking_id_handle_id_index", unique: true
     t.index ["fish_id"], name: "index_cooking_informations_on_fish_id"
     t.index ["handle_id"], name: "index_cooking_informations_on_handle_id"
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_09_12_153633) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cooking_informations", "cookings"
+  add_foreign_key "cooking_informations", "cookwares"
   add_foreign_key "cooking_informations", "fishes"
   add_foreign_key "cooking_informations", "handles"
   add_foreign_key "cooking_memories", "users"
