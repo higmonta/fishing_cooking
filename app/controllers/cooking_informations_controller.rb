@@ -17,6 +17,7 @@ class CookingInformationsController < ApplicationController
       @cooking_name = params[:cooking_name]
       @handle_pattern = search_time_format.handle_search
       @cooking_information = search_time_format.cooking_information_search
+      @cookware_name = @cooking_information.cookware.name
     else
       flash.now[:danger] = t '.search_error_message'
       render :search_time
@@ -28,6 +29,7 @@ class CookingInformationsController < ApplicationController
     @cooking_name = params[:cooking_name]
     search_time_format = CookingSearchTimeForm.new(cooking_information_params)
     @cooking_information = search_time_format.cooking_information_search
+    @cookware_name = @cooking_information.cookware.name
     calculate_cooking_time_format = CalculateCookingTimeForm.new(calculate_cooking_time_form_params)
     if calculate_cooking_time_format.save
       calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])

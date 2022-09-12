@@ -42,7 +42,6 @@ ja:
       count_placeholder: '料理する魚の数(必須)'
       let_foodstuff_capacity: '魚を寝かせられるキャパシティ'
       let_foodstuff_capacity_placeholder: '匹数(必須)'
-      cookware_capacity: '調理機材のキャパシティ'
       cookware_capacity_placeholder: '匹数(必須)'
       calculate_button: '合計の料理時間は?'
       title: '調理時間検索'

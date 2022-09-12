@@ -12,7 +12,7 @@
     = hidden_field_tag :let_foodstuff_capacity, 0
   - if !@cooking_information.cooking_time.zero?
     .mt-4
-      = f.label :cookware_capacity, "#{t 'cooking_informations.search_calculate_cooking_time.cookware_capacity'}:"
+      = f.label :cookware_capacity, "#{@cookware_name}のキャパシティ:"
       = f.number_field :cookware_capacity, min: 0.5, step: 0.5, placeholder: "#{t 'cooking_informations.search_calculate_cooking_time.cookware_capacity_placeholder'}", value: params[:cookware_capacity], class: 'calculate-cooking-capacity-form mt-2 text-center'
       .fs-6 ※この料理を際に魚を焼いたり揚げたりなど火を通す工程がある場合(刺身などは、火を通さないので0で入力する)は、フライパンやフライヤーなどのキャパシティを入力する(例1:フライパンの大きさが魚の半身しか焼けない場合は、0.5と入力)(例2:フライヤーの大きさが魚5匹分を揚げられる場合は、5と入力)
   - else
