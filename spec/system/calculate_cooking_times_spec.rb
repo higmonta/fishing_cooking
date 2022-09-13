@@ -9,7 +9,7 @@ RSpec.describe "CalculateCookingTimes", type: :system do
     it { expect(page).to_not have_selector('img') }
     it { expect(page).to_not have_content '調理する魚の数:' }
     it { expect(page).to_not have_content '魚を寝かせられるキャパシティ:' }
-    it { expect(page).to_not have_content '調理機材のキャパシティ:' }
+    it { expect(page).to_not have_content 'のキャパシティ:' }
     it { expect(page).to_not have_selector('iframe') }
   end
 
@@ -77,41 +77,115 @@ RSpec.describe "CalculateCookingTimes", type: :system do
             all_handle_patterns_array.push("#{handle[:pattern]}")
           end
           select_fish_kind = all_fish_kinds_array.sample
-          select_fish_kind_array = ["#{select_fish_kind}"]
-          other_than_select_fish_kinds_array = all_fish_kinds_array - select_fish_kind_array
-          random_other_than_select_fish_kind = other_than_select_fish_kinds_array.sample
           fish = Fish.find_by(kind: select_fish_kind)
           fish_cooking_names_array = []
           fish.cookings.each do |cooking|
             fish_cooking_names_array << cooking[:name]
           end
           select_cooking_name = fish_cooking_names_array.sample
-          select_cooking_name_array = ["#{select_cooking_name}"]
-          other_than_select_handle_patterns_array = all_cooking_names_array - select_cooking_name_array
-          random_other_than_select_cooking_name = other_than_select_handle_patterns_array.sample
           cooking_id = Cooking.find_by(name: select_cooking_name).id
           fish_id = Fish.find_by(kind: select_fish_kind).id
           handle_id = CookingInformation.find_by(cooking_id: cooking_id, fish_id: fish_id).handle_id
           display_handle_pattern = Handle.find_by(id: handle_id).pattern
-          display_handle_pattern_array = ["#{display_handle_pattern}"]
-          other_than_display_handle_patterns_array = all_handle_patterns_array - display_handle_pattern_array
-          random_other_than_display_handle_pattern = other_than_display_handle_patterns_array.sample
           select "#{select_fish_kind}", from: 'fish_kind'
           select "#{select_cooking_name}", from: 'cooking_name'
           find('.search-button').click
           within('.title') do
             expect(page).to have_content "料理名: #{select_cooking_name}(#{select_fish_kind})"
-            expect(page).to_not have_content "#{random_other_than_select_cooking_name}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_kind}"
             expect(page).to have_content "捌き方: #{display_handle_pattern}"
-            expect(page).to_not have_content "#{random_other_than_display_handle_pattern}"
           end
           expect(page).to have_selector("img[src*=#{select_fish_kind}]")
-          expect(page).to_not have_selector("img[src*=#{random_other_than_select_fish_kind}]")
-          expect(page).to have_content '調理する魚の数:'
-          expect(page).to have_content '魚を寝かせられるキャパシティ:'
-          expect(page).to have_content '調理機材のキャパシティ:'
           expect(page).to have_selector('iframe')
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+      end
+
+      context '魚を寝かせる工程と焼いたり揚げたりなどの加熱する工程がある料理を選んだ時' do
+        it '魚を寝かせられるキャパシティのフォーム欄と調理器具のキャパシティのフォームの欄が表示される' do
+          cooking_informations = CookingInformation.where.not(rest_fish_time: 0).where.not(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "調理する魚の数:"
+          expect(page).to have_content "魚を寝かせられるキャパシティ:"
+          expect(page).to have_content "のキャパシティ:"
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+
+        it '調理器具のキャパシティのフォームのラベルに使用する調理器具名が表示される' do
+          cooking_informations = CookingInformation.where.not(rest_fish_time: 0).where.not(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          display_cookware_name = cooking_information.cookware.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "#{display_cookware_name}のキャパシティ:"
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+      end
+
+      context '魚を寝かせる工程はあるが、焼いたり揚げたりなどの加熱する工程が無い料理を選んだ時' do
+        xit '魚を寝かせられるキャパシティのフォーム欄が表示され、調理器具のキャパシティのフォームの欄が表示されない' do  #現状で該当する料理がないので、実行しないようにしている
+          cooking_informations = CookingInformation.where.not(rest_fish_time: 0).where(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "調理する魚の数:"
+          expect(page).to have_content "魚を寝かせられるキャパシティ:"
+          expect(page).to_not have_content "のキャパシティ:"
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+      end
+
+      context '魚を寝かせる工程は無いが、焼いたり揚げたりなどの加熱する工程がある料理を選んだ時' do
+        it '魚を寝かせられるキャパシティのフォーム欄が表示されず、調理器具のキャパシティのフォームの欄が表示される' do
+          cooking_informations = CookingInformation.where(rest_fish_time: 0).where.not(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "調理する魚の数:"
+          expect(page).to_not have_content "魚を寝かせられるキャパシティ:"
+          expect(page).to have_content "のキャパシティ:"
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+
+        it '調理器具のキャパシティのフォームのラベルに使用する調理器具名が表示される' do
+          cooking_informations = CookingInformation.where(rest_fish_time: 0).where.not(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          display_cookware_name = cooking_information.cookware.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "#{display_cookware_name}のキャパシティ:"
+          expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
+        end
+      end
+
+      context '魚を寝かせる工程と焼いたり揚げたりなどの加熱する工程が無い料理を選んだ時' do
+        it '魚を寝かせられるキャパシティのフォーム欄と調理器具のキャパシティのフォームの欄が表示されない' do
+          cooking_informations = CookingInformation.where(rest_fish_time: 0).where(cooking_time: 0)
+          cooking_information = cooking_informations.sample
+          select_fish_kind = cooking_information.fish.kind
+          select_cooking_name = cooking_information.cooking.name
+          select "#{select_fish_kind}", from: 'fish_kind'
+          select "#{select_cooking_name}", from: 'cooking_name'
+          find('.search-button').click
+          expect(page).to have_content "調理する魚の数:"
+          expect(page).to_not have_content "魚を寝かせられるキャパシティ:"
+          expect(page).to_not have_content "のキャパシティ:"
           expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
         end
       end
@@ -134,13 +208,10 @@ RSpec.describe "CalculateCookingTimes", type: :system do
           fish.cookings.each do |cooking|
             select_fish_cooking_names_array << cooking[:name]
           end
-          other_than_select_fish_cookings_names_array = all_cooking_names_array - select_fish_cooking_names_array
-          random_other_than_select_fish_cooking_name = other_than_select_fish_cookings_names_array.sample
           random_select_fish_cooking_name = select_fish_cooking_names_array.sample
           select "#{select_fish_kind}", from: 'fish_kind'
           within('#cooking_name') do
             expect(page).to have_content "#{random_select_fish_cooking_name}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_cooking_name}"
           end
         end
       end
@@ -212,40 +283,24 @@ RSpec.describe "CalculateCookingTimes", type: :system do
             all_handle_patterns_array.push("#{handle[:pattern]}")
           end
           select_fish_kind = all_fish_kinds_array.sample
-          select_fish_kind_array = ["#{select_fish_kind}"]
-          other_than_select_fish_kinds_array = all_fish_kinds_array - select_fish_kind_array
-          random_other_than_select_fish_kind = other_than_select_fish_kinds_array.sample
           fish = Fish.find_by(kind: select_fish_kind)
           fish_cooking_names_array = []
           fish.cookings.each do |cooking|
             fish_cooking_names_array << cooking[:name]
           end
           select_cooking_name = fish_cooking_names_array.sample
-          select_cooking_name_array = ["#{select_cooking_name}"]
-          other_than_select_handle_patterns_array = all_cooking_names_array - select_cooking_name_array
-          random_other_than_select_cooking_name = other_than_select_handle_patterns_array.sample
           cooking_id = Cooking.find_by(name: select_cooking_name).id
           fish_id = Fish.find_by(kind: select_fish_kind).id
           handle_id = CookingInformation.find_by(cooking_id: cooking_id, fish_id: fish_id).handle_id
           display_handle_pattern = Handle.find_by(id: handle_id).pattern
-          display_handle_pattern_array = ["#{display_handle_pattern}"]
-          other_than_display_handle_patterns_array = all_handle_patterns_array - display_handle_pattern_array
-          random_other_than_display_handle_pattern = other_than_display_handle_patterns_array.sample
           select "#{select_fish_kind}", from: 'fish_kind'
           select "#{select_cooking_name}", from: 'cooking_name'
           find('.search-button').click
           within('.title') do
             expect(page).to have_content "料理名: #{select_cooking_name}(#{select_fish_kind})"
-            expect(page).to_not have_content "#{random_other_than_select_cooking_name}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_kind}"
             expect(page).to have_content "捌き方: #{display_handle_pattern}"
-            expect(page).to_not have_content "#{random_other_than_display_handle_pattern}"
           end
           expect(page).to have_selector("img[src*=#{select_fish_kind}]")
-          expect(page).to_not have_selector("img[src*=#{random_other_than_select_fish_kind}]")
-          expect(page).to have_content '調理する魚の数:'
-          expect(page).to have_content '魚を寝かせられるキャパシティ:'
-          expect(page).to have_content '調理機材のキャパシティ:'
           expect(page).to have_selector('iframe')
           expect(current_path).to eq search_calculate_cooking_time_cooking_informations_path
         end
@@ -269,13 +324,10 @@ RSpec.describe "CalculateCookingTimes", type: :system do
           fish.cookings.each do |cooking|
             select_fish_cooking_names_array << cooking[:name]
           end
-          other_than_select_fish_cookings_names_array = all_cooking_names_array - select_fish_cooking_names_array
-          random_other_than_select_fish_cooking_name = other_than_select_fish_cookings_names_array.sample
           random_select_fish_cooking_name = select_fish_cooking_names_array.sample
           select "#{select_fish_kind}", from: 'fish_kind'
           within('#cooking_name') do
             expect(page).to have_content "#{random_select_fish_cooking_name}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_cooking_name}"
           end
         end
       end
