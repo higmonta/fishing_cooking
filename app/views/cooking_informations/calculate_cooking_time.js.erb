@@ -1,9 +1,14 @@
 $("#js-calculate-cooking-time-form").html("<%= j(render('calculate_cooking_time_form')) %>");
 
 var result_calculate_html = `
-料理時間の合計: <%= @operation_total_time %>(分)<br>
-捌く時間の合計: <%= @handle_total_time %>(分)<br>
-調理時間の合計: <%= @cooking_total_time %>(分)<br>
+<p>料理時間の合計: <%= @operation_total_time %>(分)</p>
+<p>捌く時間の合計: <%= @handle_total_time %>(分)</p>
+<p>調理時間の合計: <%= @cooking_total_time %>(分)</p>
+  <div class='fs-6'>
+    ※こちらの時間は、効率良く料理をした場合の最短時間の目安になります。<br>
+    (例:魚に塩を振って10分置いてから魚を焼く場合に、焼いている間に次に焼く魚に先に塩を振って置いておくなど)<br>
+    魚を捌く事に慣れているか、慣れていないかなどによっても目安の時間と変わることがあります。<br>
+  </div>
 `;
 
 $("#js-result-calculate-cooking-time").html(result_calculate_html);
