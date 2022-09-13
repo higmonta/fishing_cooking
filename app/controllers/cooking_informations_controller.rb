@@ -17,7 +17,7 @@ class CookingInformationsController < ApplicationController
       @cooking_name = params[:cooking_name]
       @handle_pattern = search_time_format.handle_search
       @cooking_information = search_time_format.cooking_information_search
-      @cookware_name = @cooking_information.cookware.name
+      @cookware_name = @cooking_information.cookware&.name
     else
       flash.now[:danger] = t '.search_error_message'
       render :search_time
