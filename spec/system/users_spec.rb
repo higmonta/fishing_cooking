@@ -10,7 +10,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context '全ての項目が入力されている時' do
         it 'ユーザー登録に成功する' do
           fill_in 'user_name', with: 'test_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password', with: 'test_password'
           fill_in 'user_password_confirmation', with: 'test_password'
           click_on '登録する'
@@ -21,7 +21,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
 
       context 'ニックネームの欄が入力されていない時' do
         it 'ユーザー登録に失敗する' do
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password', with: 'test_password'
           fill_in 'user_password_confirmation', with: 'test_password'
           click_on '登録する'
@@ -74,7 +74,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'パスワードの欄が入力されていない時' do
         it 'ユーザー登録に失敗する' do
           fill_in 'user_name', with: 'test_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password_confirmation', with: 'test_password'
           click_on '登録する'
           expect(page).to have_content '登録に失敗しました'
@@ -87,7 +87,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'パスワード再確認の欄が入力されていない時' do
         it 'ユーザー登録に失敗する' do
           fill_in 'user_name', with: 'test_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password', with: 'test_password'
           click_on '登録する'
           expect(page).to have_content '登録に失敗しました'
@@ -100,7 +100,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'パスワードの欄とパスワード再確認の欄に入力されている文字数が10文字未満の時' do
         it 'ユーザー登録に失敗する' do
           fill_in 'user_name', with: 'test_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password', with: '1234aA'
           fill_in 'user_password_confirmation', with: '1234aA'
           click_on '登録する'
@@ -113,7 +113,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'パスワードの欄とパスワード再確認の欄に入力されている内容が違う時' do
         it 'ユーザー登録に失敗する' do
           fill_in 'user_name', with: 'test_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           fill_in 'user_password', with: 'test_password1'
           fill_in 'user_password_confirmation', with: 'test_password'
           click_on '登録する'
@@ -283,11 +283,11 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'ニックネームの欄とEメールの欄の両方を編集する時' do
         it 'プロフィールの編集に成功する' do
           fill_in 'user_name', with: 'update_user_name'
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           click_on '更新する'
           expect(page).to have_content '会員情報の変更に成功しました'
           expect(page).to have_content 'update_user_name'
-          expect(page).to have_content 'test@gmail.com'
+          expect(page).to have_content 'test_test@gmail.com'
           expect(current_path).to eq profile_path
         end
       end
@@ -295,7 +295,7 @@ RSpec.describe "UsersSpec.rbs", type: :system do
       context 'ニックネームの欄が未入力でEメールアドレスを編集する時' do
         it 'プロフィールの編集に失敗する' do
           fill_in 'user_name', with: nil
-          fill_in 'user_email', with: 'test@gmail.com'
+          fill_in 'user_email', with: 'test_test@gmail.com'
           click_on '更新する'
           expect(page).to have_content '登録に失敗しました'
           expect(page).to have_content 'ニックネームを入力してください'
