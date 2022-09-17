@@ -482,3 +482,6 @@ tako_handles.each do |tako_handle|
   handle_url = tako_handle[:handle_url]
   tako.fish_handle_informations.create(handle_id: handle_id, handle_time: handle_time, handle_url: handle_url)
 end
+
+# 初期のテストユーザー
+User.create(name: 'テストユーザー', email: 'test@gmail.com', password: '123456789test', password_confirmation: '123456789test')
