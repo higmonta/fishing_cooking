@@ -1,7 +1,7 @@
 class CookingInformationsController < ApplicationController
   before_action :set_fishes
-  before_action :set_cookings, only: ["search_time", "search_calculate_cooking_time", "calculate_cooking_time"]
-  
+  before_action :set_cookings, only: %w[search_time search_calculate_cooking_time calculate_cooking_time]
+
   def index
     @handles = Handle.all
     @q = CookingInformation.ransack(params[:q])
@@ -32,16 +32,14 @@ class CookingInformationsController < ApplicationController
     @cookware_name = @cooking_information.cookware&.name
     calculate_cooking_time_format = CalculateCookingTimeForm.new(calculate_cooking_time_form_params)
     if calculate_cooking_time_format.save
-      calculate_cooking_time = CalculateCookingTime.new(fish_kind: params[:fish_kind], cooking_name: params[:cooking_name], let_foodstuff_capacity: params[:let_foodstuff_capacity], cookware_capacity: params[:cookware_capacity], count: params[:count])
+      calculate_cooking_time = CalculateCookingTime.new(calculate_cooking_time_params)
       @handle_total_time = calculate_cooking_time.calculate_handle_total_time
       @cooking_total_time = calculate_cooking_time.calculate_cooking_total_time
       @operation_total_time = @handle_total_time + @cooking_total_time
-      render "calculate_cooking_time.js.erb"
+      render 'calculate_cooking_time.js.erb'
     else
-      @fish_kind = params[:fish_kind]
-      @cooking_name = params[:cooking_name]
       flash.now[:danger] = t '.calculate_error_message'
-      render "calculate_cooking_time_error.js.erb"
+      render 'calculate_cooking_time_error.js.erb'
     end
   end
 
@@ -61,5 +59,9 @@ class CookingInformationsController < ApplicationController
 
   def calculate_cooking_time_form_params
     params.permit(:let_foodstuff_capacity, :cookware_capacity, :count)
+  end
+
+  def calculate_cooking_time_params
+    params.permit(:fish_kind, :cooking_name, :let_foodstuff_capacity, :cookware_capacity, :count)
   end
 end

@@ -1,6 +1,6 @@
 cookings = %w[フライ 刺身 塩焼き 唐揚げ カルパッチョ 天ぷら 磯辺揚げ なめろう ムニエル 煮付け ソテー 姿焼き ホイル焼き パスタ 汁
               炊き込みご飯 チヂミ 茶漬け 鍋 酒蒸し]
-fish = %w[アジ マメアジ イカ サバ マハゼ カサゴ タチウオ カワハギ イシモチ メジナ タコ]
+fishes = %w[アジ マメアジ イカ サバ マハゼ カサゴ タチウオ カワハギ イシモチ メジナ タコ]
 handles = %w[内臓処理 内臓処理+ゼイゴの処理 内臓処理+皮を剥ぐ 内臓処理+ウロコの処理 3枚おろし 3枚おろし+ゼイゴの処理
              3枚おろし+ゼイゴの処理+骨の処理 3枚おろし+ゼイゴの処理+骨の処理+皮を剥ぐ 3枚おろし+ウロコの処理 背開き+骨の処理
              背開き+ゼイゴの処理 下処理(ぬめりを取るなど)+茹でる]
@@ -15,7 +15,8 @@ aji_cookings = [
     handle_pattern: '3枚おろし+ゼイゴの処理+骨の処理+皮を剥ぐ', cooking_total_time: 0, rest_fish_time: 0, cooking_time: 0 },
   { cooking_name: '塩焼き', cooking_image: '塩焼き.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/c70654e6-d9ba-4f51-a66a-c90c58490925',
-    handle_pattern: '内臓処理+ゼイゴの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 15, cookware_name: 'フライパン' },
+    handle_pattern: '内臓処理+ゼイゴの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 15,
+    cookware_name: 'フライパン' },
   { cooking_name: 'カルパッチョ', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/31a3451e-ce38-4546-80aa-0145e525ba6b',
     handle_pattern: '3枚おろし+ゼイゴの処理+骨の処理+皮を剥ぐ', cooking_total_time: 10, rest_fish_time: 0, cooking_time: 0 },
@@ -27,16 +28,19 @@ aji_cookings = [
     handle_pattern: '3枚おろし+ゼイゴの処理+骨の処理+皮を剥ぐ', cooking_total_time: 15, rest_fish_time: 0, cooking_time: 0 },
   { cooking_name: 'ムニエル', cooking_image: 'ムニエル.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/b6ac1eba-a1bc-4a03-bbcd-3cc1c412fbcb',
-    handle_pattern: '3枚おろし+ゼイゴの処理+骨の処理', cooking_total_time: 30, rest_fish_time: 0, cooking_time: 4, cookware_name: 'フライパン' },
+    handle_pattern: '3枚おろし+ゼイゴの処理+骨の処理', cooking_total_time: 30, rest_fish_time: 0, cooking_time: 4,
+    cookware_name: 'フライパン' },
   { cooking_name: '煮付け', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/83e46755-0f2e-44ea-a322-497bbfcccd39',
     handle_pattern: '内臓処理+ゼイゴの処理', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 10, cookware_name: '鍋' },
   { cooking_name: 'ソテー', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/996aee3a-db4f-4589-b72c-27f8d5210092',
-    handle_pattern: '3枚おろし+ゼイゴの処理', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 5, cookware_name: 'フライパン' },
+    handle_pattern: '3枚おろし+ゼイゴの処理', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 5,
+    cookware_name: 'フライパン' },
   { cooking_name: 'ホイル焼き', cooking_image: 'sample.jpg',
     cooking_url: 'https://recipe.rakuten.co.jp/recipe/1820025562/',
-    handle_pattern: '3枚おろし+ゼイゴの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 12, cookware_name: 'フライパン' },
+    handle_pattern: '3枚おろし+ゼイゴの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 12,
+    cookware_name: 'フライパン' },
   { cooking_name: '炊き込みご飯', cooking_image: 'sample.jpg',
     cooking_url: 'https://delishkitchen.tv/recipes/149663037043769763',
     handle_pattern: '内臓処理+ゼイゴの処理', cooking_total_time: 60, rest_fish_time: 0, cooking_time: 50, cookware_name: '炊飯器' },
@@ -111,7 +115,8 @@ mahaze_cookings = [
 kasago_cookings = [
   { cooking_name: '唐揚げ', cooking_image: '唐揚げ.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/308a73f5-41d6-4ca6-9aa7-dcb73dc75261',
-    handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 5, cookware_name: 'フライヤー' },
+    handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 5,
+    cookware_name: 'フライヤー' },
   { cooking_name: '煮付け', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/5676092a-3ef2-4700-a90a-e8631344a1d8',
     handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 0, cooking_time: 7, cookware_name: 'フライパン' },
@@ -147,7 +152,8 @@ kawahagi_cookings = [
 ishimochi_cookings = [
   { cooking_name: '塩焼き', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/7eb416fa-ca8c-4fd1-ae7d-4a7b02d093df',
-    handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 15, cookware_name: 'オーブントースター' },
+    handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 10, cooking_time: 15,
+    cookware_name: 'オーブントースター' },
   { cooking_name: '煮付け', cooking_image: 'sample.jpg',
     cooking_url: 'https://www.kurashiru.com/recipes/e5c44c5b-c3a3-40ac-931f-e2a2cfc22a03',
     handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 30, rest_fish_time: 0, cooking_time: 11, cookware_name: '鍋' },
@@ -161,7 +167,8 @@ mejina_cookings = [
   { cooking_name: '煮付け', cooking_image: 'sample.jpg', cooking_url: 'https://cookpad.com/recipe/4138440',
     handle_pattern: '内臓処理+ウロコの処理', cooking_total_time: 25, rest_fish_time: 0, cooking_time: 25, cookware_name: '鍋' },
   { cooking_name: 'ムニエル', cooking_image: 'sample.jpg', cooking_url: 'https://cookpad.com/recipe/293169',
-    handle_pattern: '3枚おろし+ウロコの処理', cooking_total_time: 15, rest_fish_time: 10, cooking_time: 5, cookware_name: 'フライパン' },
+    handle_pattern: '3枚おろし+ウロコの処理', cooking_total_time: 15, rest_fish_time: 10, cooking_time: 5,
+    cookware_name: 'フライパン' },
   { cooking_name: 'フライ', cooking_image: 'sample.jpg', cooking_url: 'https://recipe.rakuten.co.jp/recipe/1770028723/',
     handle_pattern: '3枚おろし+ウロコの処理', cooking_total_time: 5, rest_fish_time: 0, cooking_time: 1, cookware_name: 'フライヤー' }
 ]
@@ -170,17 +177,22 @@ tako_cookings = [
   { cooking_name: '刺身', cooking_image: '刺身.jpg', cooking_url: 'https://delishkitchen.tv/recipes/380127811270083664',
     handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 0, rest_fish_time: 0, cooking_time: 0 },
   { cooking_name: '唐揚げ', cooking_image: '唐揚げ.jpg', cooking_url: 'https://www.kurashiru.com/recipes/6aa51ad7-f05f-4ccb-8d50-dd0176dc977a',
-    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 30, rest_fish_time: 15, cooking_time: 3, cookware_name: 'フライヤー' },
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 30, rest_fish_time: 15, cooking_time: 3,
+    cookware_name: 'フライヤー' },
   { cooking_name: 'カルパッチョ', cooking_image: 'カルパッチョ.jpg', cooking_url: 'https://www.sirogohan.com/recipe/takokarupa/',
     handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 10, rest_fish_time: 0, cooking_time: 0 },
   { cooking_name: '磯辺揚げ', cooking_image: '磯辺揚げ.jpg', cooking_url: 'https://www.kurashiru.com/recipes/47d4301d-a088-430a-ba83-05d3436f6f1b',
-    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 80, rest_fish_time: 60, cooking_time: 3, cookware_name: 'フライヤー' },
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 80, rest_fish_time: 60, cooking_time: 3,
+    cookware_name: 'フライヤー' },
   { cooking_name: '煮付け', cooking_image: '煮付け.jpg', cooking_url: 'https://cookpad.com/recipe/2232854',
-    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 40, rest_fish_time: 0, cooking_time: 30, cookware_name: '鍋' },
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 40, rest_fish_time: 0, cooking_time: 30,
+    cookware_name: '鍋' },
   { cooking_name: 'ソテー', cooking_image: 'ソテー.jpg', cooking_url: 'https://www.kurashiru.com/recipes/b00137d1-d3f7-4da2-871a-b431c65968ed',
-    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 2, cookware_name: 'フライパン' },
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 20, rest_fish_time: 0, cooking_time: 2,
+    cookware_name: 'フライパン' },
   { cooking_name: '炊き込みご飯', cooking_image: '炊き込みご飯.jpg', cooking_url: 'https://www.kurashiru.com/recipes/781bca7b-8c5c-4c97-a775-29f006b9eb99',
-    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 50, rest_fish_time: 0, cooking_time: 40, cookware_name: '炊飯器' }
+    handle_pattern: '下処理(ぬめりを取るなど)+茹でる', cooking_total_time: 50, rest_fish_time: 0, cooking_time: 40,
+    cookware_name: '炊飯器' }
 ]
 
 aji_handles = [
@@ -233,14 +245,14 @@ mejina_handles = [
 ]
 
 tako_handles = [
-  { handle_pattern: '下処理(ぬめりを取るなど)+茹でる', handle_time: 15, handle_url: 'https://www.youtube.com/embed/dZ4Z8fsjkek'}
+  { handle_pattern: '下処理(ぬめりを取るなど)+茹でる', handle_time: 15, handle_url: 'https://www.youtube.com/embed/dZ4Z8fsjkek' }
 ]
 
 cookings.each do |cooking|
   Cooking.create(name: cooking)
 end
 
-fish.each do |fish|
+fishes.each do |fish|
   Fish.create(kind: fish)
 end
 
@@ -285,7 +297,8 @@ mameaji_cookings.each do |mameaji_cooking|
   cookware_id = Cookware.find_by(name: mameaji_cooking[:cookware_name])&.id
   mameaji.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                       handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                      rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                      rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                      cookware_id: cookware_id)
 end
 mameaji_handles.each do |mameaji_handle|
   handle_id = Handle.find_by(pattern: mameaji_handle[:handle_pattern]).id
@@ -348,7 +361,8 @@ mahaze_cookings.each do |mahaze_cooking|
   cookware_id = Cookware.find_by(name: mahaze_cooking[:cookware_name])&.id
   mahaze.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                      handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                     cookware_id: cookware_id)
 end
 mahaze_handles.each do |mahaze_handle|
   handle_id = Handle.find_by(pattern: mahaze_handle[:handle_pattern]).id
@@ -369,7 +383,8 @@ kasago_cookings.each do |kasago_cooking|
   cookware_id = Cookware.find_by(name: kasago_cooking[:cookware_name])&.id
   kasago.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                      handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                     cookware_id: cookware_id)
 end
 kasago_handles.each do |kasago_handle|
   handle_id = Handle.find_by(pattern: kasago_handle[:handle_pattern]).id
@@ -390,7 +405,8 @@ tachiuo_cookings.each do |tachiuo_cooking|
   cookware_id = Cookware.find_by(name: tachiuo_cooking[:cookware_name])&.id
   tachiuo.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                       handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                      rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                      rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                      cookware_id: cookware_id)
 end
 tachiuo_handles.each do |tachiuo_handle|
   handle_id = Handle.find_by(pattern: tachiuo_handle[:handle_pattern]).id
@@ -411,7 +427,8 @@ kawahagi_cookings.each do |kawahagi_cooking|
   cookware_id = Cookware.find_by(name: kawahagi_cooking[:cookware_name])&.id
   kawahagi.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                        handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                       rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                       rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                       cookware_id: cookware_id)
 end
 kawahagi_handles.each do |kawahagi_handle|
   handle_id = Handle.find_by(pattern: kawahagi_handle[:handle_pattern]).id
@@ -432,7 +449,8 @@ ishimochi_cookings.each do |ishimochi_cooking|
   cookware_id = Cookware.find_by(name: ishimochi_cooking[:cookware_name])&.id
   ishimochi.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                         handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                        rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                        rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                        cookware_id: cookware_id)
 end
 ishimochi_handles.each do |ishimochi_handle|
   handle_id = Handle.find_by(pattern: ishimochi_handle[:handle_pattern]).id
@@ -453,7 +471,8 @@ mejina_cookings.each do |mejina_cooking|
   cookware_id = Cookware.find_by(name: mejina_cooking[:cookware_name])&.id
   mejina.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
                                      handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                     cookware_id: cookware_id)
 end
 mejina_handles.each do |mejina_handle|
   handle_id = Handle.find_by(pattern: mejina_handle[:handle_pattern]).id
@@ -473,8 +492,9 @@ tako_cookings.each do |tako_cooking|
   cooking_time = tako_cooking[:cooking_time]
   cookware_id = Cookware.find_by(name: tako_cooking[:cookware_name])&.id
   tako.cooking_informations.create(cooking_id: cooking_id, image: image, cooking_url: cooking_url,
-                                     handle_id: handle_id, cooking_total_time: cooking_total_time,
-                                     rest_fish_time: rest_fish_time, cooking_time: cooking_time, cookware_id: cookware_id)
+                                   handle_id: handle_id, cooking_total_time: cooking_total_time,
+                                   rest_fish_time: rest_fish_time, cooking_time: cooking_time,
+                                   cookware_id: cookware_id)
 end
 tako_handles.each do |tako_handle|
   handle_id = Handle.find_by(pattern: tako_handle[:handle_pattern]).id

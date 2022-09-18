@@ -1,7 +1,7 @@
 class CookingSearchTimeForm
   include ActiveModel::Model
   include ActiveModel::Attributes
-  
+
   attribute :fish_kind, :string
   attribute :cooking_name, :string
 

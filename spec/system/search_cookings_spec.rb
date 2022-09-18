@@ -257,6 +257,7 @@ RSpec.describe "SearchCookings", type: :system do
       end
 
       context '検索条件を入れない時' do
+        before { find('.search-button').click }
         it_behaves_like '全ての料理が表示される'
       end
 

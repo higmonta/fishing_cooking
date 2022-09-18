@@ -1,6 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
+  TargetRubyVersion: 2.5
   # 除外
   Exclude:
     - 'bin/**'
@@ -23,4 +24,27 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
-  
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/cooking_informations_controller.rb'
+    - 'app/controllers/password_resets_controller.rb'
+    - 'app/forms/calculate_cooking_time.rb'
+
+MethodLength:
+  Exclude:
+    - 'app/controllers/cooking_informations_controller.rb'
+    - 'app/controllers/password_resets_controller.rb'
+    - 'app/forms/calculate_cooking_time.rb'
+
+
+Style/StringConcatenation:
+  Mode: conservative
+
+CyclomaticComplexity:
+  Exclude:
+    - 'app/forms/calculate_cooking_time.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/forms/calculate_cooking_time.rb'
