@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
@@ -64,4 +64,6 @@ gem 'pry-rails'
 gem 'kaminari'
 gem 'sorcery'
 gem "image_processing", ">= 1.2"
-
+gem "net-smtp"
+gem 'psych', '~> 3.1'
+gem 'matrix'
