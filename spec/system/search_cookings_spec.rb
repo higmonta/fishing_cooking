@@ -234,13 +234,10 @@ RSpec.describe "SearchCookings", type: :system do
           fish.handles.each do |handle|
             select_fish_handle_patterns_array << handle[:pattern]
           end
-          other_than_select_fish_handles_patterns_array = all_handle_patterns_array - select_fish_handle_patterns_array
-          random_other_than_select_fish_handle_pattern = other_than_select_fish_handles_patterns_array.sample
           random_select_fish_handle_pattern = select_fish_handle_patterns_array.sample
           select "#{select_fish_kind}", from: 'q_fish_kind_eq'
           within('#q_handle_pattern_eq') do
             expect(page).to have_content "#{random_select_fish_handle_pattern}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_handle_pattern}"
           end
         end
       end
@@ -469,13 +466,10 @@ RSpec.describe "SearchCookings", type: :system do
           fish.handles.each do |handle|
             select_fish_handle_patterns_array << handle[:pattern]
           end
-          other_than_select_fish_handles_patterns_array = all_handle_patterns_array - select_fish_handle_patterns_array
-          random_other_than_select_fish_handle_pattern = other_than_select_fish_handles_patterns_array.sample
           random_select_fish_handle_pattern = select_fish_handle_patterns_array.sample
           select "#{select_fish_kind}", from: 'q_fish_kind_eq'
           within('#q_handle_pattern_eq') do
             expect(page).to have_content "#{random_select_fish_handle_pattern}"
-            expect(page).to_not have_content "#{random_other_than_select_fish_handle_pattern}"
           end
         end
       end
