@@ -69,3 +69,4 @@ gem "net-smtp"
 gem 'psych', '~> 3.1'
 gem 'matrix'
 gem 'net-pop'
+gem 'net-imap'
