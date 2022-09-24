@@ -70,3 +70,4 @@ gem 'psych', '~> 3.1'
 gem 'matrix'
 gem 'net-pop'
 gem 'net-imap'
+gem "aws-sdk-s3", require: false
