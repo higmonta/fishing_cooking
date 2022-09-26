@@ -19,7 +19,8 @@ class CookingMemoriesController < ApplicationController
   def index
     @q = CookingMemory.ransack(params[:q])
     @cooking_memories = @q.result(distinct: true)
-    @current_user_cooking_memories = @cooking_memories.where(user_id: current_user.id).order(cooking_date: :DESC, created_at: :DESC)
+    @current_user_cooking_memories = @cooking_memories.where(user_id: current_user.id)
+                                                      .order(cooking_date: :DESC, created_at: :DESC)
   end
 
   def edit
