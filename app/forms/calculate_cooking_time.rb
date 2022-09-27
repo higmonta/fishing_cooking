@@ -32,11 +32,24 @@ class CalculateCookingTime
           cookware_capacity < let_foodstuff_capacity
       if count <= let_foodstuff_capacity
         ((count / cookware_capacity).ceil - 1) * cooking_time + cooking_total_time
-      elsif (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time >= rest_fish_time
-        ((let_foodstuff_capacity / cookware_capacity).ceil - 1) * cooking_time + cooking_total_time
-      else
-        ((let_foodstuff_capacity / cookware_capacity).ceil - 1) * cooking_time + cooking_total_time + ((count -
-        let_foodstuff_capacity) / let_foodstuff_capacity).ceil * rest_fish_time
+      elsif count > let_foodstuff_capacity
+        if (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time < rest_fish_time &&
+           ((count - let_foodstuff_capacity) % let_foodstuff_capacity).zero?
+          ((let_foodstuff_capacity - cookware_capacity) / cookware_capacity).ceil * cooking_time +
+            cooking_total_time + (rest_fish_time - (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time +
+            (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time) *
+            ((count - let_foodstuff_capacity) / let_foodstuff_capacity)
+        elsif (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time < rest_fish_time &&
+              (count - let_foodstuff_capacity) % let_foodstuff_capacity != 0
+          ((let_foodstuff_capacity - cookware_capacity) / cookware_capacity).ceil * cooking_time +
+            cooking_total_time + (rest_fish_time - (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time +
+            (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time) *
+            ((count - let_foodstuff_capacity) / let_foodstuff_capacity) + rest_fish_time -
+            (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time +
+            ((count % let_foodstuff_capacity) / cookware_capacity).ceil * cooking_time
+        elsif (let_foodstuff_capacity / cookware_capacity).ceil * cooking_time > rest_fish_time
+          ((count / cookware_capacity).ceil - 1) * cooking_time + cooking_total_time
+        end
       end
     elsif !rest_fish_time.zero? && !cooking_time.zero? && rest_fish_time > cooking_time &&
           cookware_capacity >= let_foodstuff_capacity
