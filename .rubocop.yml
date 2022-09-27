@@ -48,3 +48,7 @@ CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Exclude:
     - 'app/forms/calculate_cooking_time.rb'
+
+Style/SingleArgumentDig:
+  Exclude:
+    - 'app/mailers/application_mailer.rb'
