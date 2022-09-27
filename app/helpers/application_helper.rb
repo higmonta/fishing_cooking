@@ -10,6 +10,6 @@ module ApplicationHelper
 
   def page_full_title(page_title = '')
     base_title = 'Fishing Cook'
-    page_title.empty? ? base_title : "#{base_title} + ' | ' + #{page_title}"
+    page_title.empty? ? base_title : "#{base_title} | #{page_title}"
   end
 end
