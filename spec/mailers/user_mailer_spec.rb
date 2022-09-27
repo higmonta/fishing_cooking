@@ -13,7 +13,7 @@ RSpec.describe UserMailer, type: :mailer do
       it 'ヘッダー情報,ボディ情報が正しい' do
         expect(mail.subject).to eq 'パスワード再発行のお知らせ'
         expect(mail.to).to eq [user.email]
-        expect(mail.from).to eq ['from@example.com']
+        expect(mail.from).to eq [Rails.application.credentials.sendgrid.dig(:sender_address)]
       end
 
       it 'メール本文が正しい' do
