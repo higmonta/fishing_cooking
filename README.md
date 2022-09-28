@@ -37,3 +37,6 @@ __管理者__
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/c97d008e36ab255dbb7a440ba880106a.png)](https://gyazo.com/c97d008e36ab255dbb7a440ba880106a)
 
+## インフラ図
+[![Image from Gyazo](https://i.gyazo.com/91b118ada3532d3bf2bc2d7390ac0b48.png)](https://gyazo.com/91b118ada3532d3bf2bc2d7390ac0b48)
+
