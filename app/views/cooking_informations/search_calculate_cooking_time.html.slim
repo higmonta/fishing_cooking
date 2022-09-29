@@ -33,7 +33,7 @@
         .col-6.mt-4
           | #{t 'defaults.handle_movie'}
           .mt-3
-            iframe src="#{FishHandleInformation.find_by(fish_id: @cooking_information.fish_id, handle_id: @cooking_information.handle_id).handle_url}"
+            iframe src="#{FishHandleInformation.find_by(fish_id: @cooking_information.fish_id, handle_id: @cooking_information.handle_id).handle_url}" allow='fullscreen'
         .col-6.mt-4
           | #{t 'defaults.cooking_site'}<br>
           .mt-5
