@@ -60,7 +60,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "fishing_cooking_production"
 
-  config.action_mailer.default_url_options = { host: 'http://www.fishing-cook.com' }
+  config.action_mailer.default_url_options = { host: 'https://www.fishing-cook.com' }
 
   config.action_mailer.perform_caching = false
 
