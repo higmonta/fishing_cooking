@@ -21,10 +21,12 @@ RSpec.describe UserMailer, type: :mailer do
         expect(mail.html_part.body.to_s).to have_content 'パスワード再発行の依頼を受け付けました。'
         expect(mail.html_part.body.to_s).to have_content 'こちらのリンクからパスワードの再発行を行ってください。'
         expect(mail.html_part.body.to_s).to have_content "http://localhost:3000/password_resets/#{user.reset_password_token}/edit"
+        expect(mail.html_part.body.to_s).to have_content '本メールは送信専用です。'
         expect(mail.text_part.body.to_s).to have_content "#{user.name} 様"
         expect(mail.text_part.body.to_s).to have_content 'パスワード再発行の依頼を受け付けました。'
         expect(mail.text_part.body.to_s).to have_content 'こちらのリンクからパスワードの再発行を行ってください。'
         expect(mail.text_part.body.to_s).to have_content "http://localhost:3000/password_resets/#{user.reset_password_token}/edit"
+        expect(mail.text_part.body.to_s).to have_content '本メールは送信専用です。'
       end
     end
   end
