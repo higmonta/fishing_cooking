@@ -1,6 +1,6 @@
 .cooking-list.mt-5.fs-3
   .row
-    .col-md-10.mt-5
+    .col-10.mt-5
       .title
         ' #{t 'defaults.cooking_name'}:
         = cooking_information.cooking.name
@@ -10,9 +10,9 @@
         ' #{t 'defaults.handle_kind'}:
         = cooking_information.handle.pattern
   .row.justify-content-md-center
-    .col-md-5.mt-4
-      = image_tag cooking_image_path(cooking_information), size: '400x300', class: 'rounded-circle'
-    .col-md-7.mt-4
+    .col-5.mt-4
+      = image_tag cooking_image_path(cooking_information), size: '400x300', class: 'rounded-circle img-fluid'
+    .col-7.mt-4
       ' #{t 'cooking_informations.index.rough_ndication_time'}<br>
         #{t 'defaults.total_work_time'}:
       = operation_total_time(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id, cooking_information: cooking_information)
@@ -24,11 +24,11 @@
       = cooking_information.cooking_total_time
       | #{t 'defaults.minute'}<br>
   .row.justify-content-md-center.cooking-information-details
-    .col-md-6.mt-4
+    .col-6.mt-4
       | #{t 'defaults.handle_movie'}
       .mt-3
-        iframe width="400" height="300" src="#{FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_url}"
-    .col-md-6.mt-4
+        iframe src="#{FishHandleInformation.find_by(fish_id: cooking_information.fish_id, handle_id: cooking_information.handle_id).handle_url}"
+    .col-sm-6.mt-4
       | #{t 'defaults.cooking_site'}<br>
       .mt-5
         = link_to "#{t 'defaults.cooking_recipe'}", "#{cooking_information.cooking_url}"

@@ -1,10 +1,10 @@
 .cooking-memory-list.mt-5
   .row.justify-content-md-center
-    .col-md-10.text-end.mt-3
+    .col-10.text-end.mt-3
       = link_to "#{t 'defaults.edit_button'}", edit_cooking_memory_path(cooking_memory), class: 'me-4 btn btn-success'
       = link_to "#{t 'defaults.delete_button'}", cooking_memory_path(cooking_memory), method: :delete, data: { confirm: "#{t 'cooking_memories.index.delete_confirm_message'}" }, class: 'btn btn-danger'
   .row.justify-content-md-center.mt-4
-    .col-md-6.fs-3.text-center.cooking-memories-detail
+    .col-6.fs-3.text-center.cooking-memories-detail
       ' #{t 'defaults.cooking_name'}:
       = cooking_memory.cooking_name
       <br>
@@ -15,13 +15,13 @@
         ' #{t 'cooking_memories.index.cook_date'}:
         = l cooking_memory.cooking_date
         <br>
-    .col-md-6
+    .col-6
       - if cooking_memory.cooking_memory_image.attached?
-        = image_tag cooking_memory.cooking_memory_image.variant(resize: '350')
+        = image_tag cooking_memory.cooking_memory_image.variant(resize: '350'), class: 'img-fluid'
       - else
         = image_tag 'cooking_memory/default.png'
   - if cooking_memory.memo.present?
     .row.justify-content-md-center
-      .col-md-8.cooking-memories-memo-column.mt-4.p-4
+      .col-8.cooking-memories-memo-column.mt-4.p-4
         .fs-3.text-center.mb-3.title #{t 'cooking_memories.index.memo'}
         = simple_format(h(cooking_memory.memo))

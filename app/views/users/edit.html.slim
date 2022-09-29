@@ -2,11 +2,11 @@
 .member-registration-wrapper
   .container
     .row.justify-content-md-center
-      .col-md-6
+      .col
         .mt-3.title.text-center
           | #{t '.edit_profile'}
     .row.justify-content-md-center
-      .col-md-6.text-center
+      .col-10.col-sm-6.text-center
         = form_with model: @user, url: profile_path, local: true do |f|
           = render 'shared/error_messages', object: f.object
           .mt-4.text-center

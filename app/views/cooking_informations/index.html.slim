@@ -3,7 +3,7 @@
 .search-wrapper
   .container
     .row.justify-content-md-center
-      .col-md-10
+      .col-10
         = search_form_for @q, url: cooking_informations_path do |f|
           .mt-4
             = f.collection_select :fish_kind_eq, @fishes, :kind, :kind, { include_blank: "#{t 'defaults.search_for_fish'}" }, {class: 'search-select-form'}

@@ -3,11 +3,11 @@
 .cooking-memory-wrapper
   .container
     .row.justify-content-md-center
-      .col.col-md-6
+      .col
         .mt-3.title.text-center
           | #{t '.cooking_history'}
     .row.justify-content-md-center
-      .col-md-10
+      .col-10
         = search_form_for @q, class: 'mt-3' do |f|
           .form-group
             = f.search_field :fish_name_cont, placeholder: "#{t '.fish_kind'}", class: 'me-3 cooking-memories-search-select-form'

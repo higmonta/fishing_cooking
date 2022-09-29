@@ -2,11 +2,11 @@
 .member-registration-wrapper
   .container
     .row.justify-content-md-center
-      .col-md-6
+      .col
         .mt-3.title.text-center
           | #{t '.member_information'}
     .row.justify-content-md-center
-      .col-md-6
+      .col-10.col-sm-6
         .text-center
           h3.mt-5 = "#{t '.member_name'}: #{@user.name} #{t '.honorific_title'}"
           h3.mt-5 = "#{t '.member_email'}: #{@user.email}"
