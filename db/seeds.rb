@@ -504,4 +504,4 @@ tako_handles.each do |tako_handle|
 end
 
 # 初期のテストユーザー
-User.create(name: 'テストユーザー', email: 'test@gmail.com', password: '123456789test', password_confirmation: '123456789test')
+User.create(name: 'テストユーザー', email: 'fishing.cook634@gmail.com', password: '123456789test', password_confirmation: '123456789test')
